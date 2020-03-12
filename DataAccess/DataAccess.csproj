@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{171123F8-1129-40B1-B8EB-2D90EE357BF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountSeatDao.cs" />
+    <Compile Include="AccountSeatDetDao.cs" />
+    <Compile Include="ActivityDao.cs" />
+    <Compile Include="AreaDao.cs" />
+    <Compile Include="BillingDao.cs" />
+    <Compile Include="BillingTypeDao.cs" />
+    <Compile Include="BonusDao.cs" />
+    <Compile Include="BuckUpDao.cs" />
+    <Compile Include="CashDao.cs" />
+    <Compile Include="ChartCountDao.cs" />
+    <Compile Include="CivilStatusDao.cs" />
+    <Compile Include="ClassDao.cs" />
+    <Compile Include="CompanyDao.cs" />
+    <Compile Include="ConnectionToSql.cs" />
+    <Compile Include="CountDao.cs" />
+    <Compile Include="CustumerDao.cs" />
+    <Compile Include="DataReports\CustumerDaoReports.cs" />
+    <Compile Include="DataReports\DashboardDao.cs" />
+    <Compile Include="DataReports\OrderDaoReport.cs" />
+    <Compile Include="DataReports\ProductDaoReport.cs" />
+    <Compile Include="DistricDao.cs" />
+    <Compile Include="DocumentTypeDao.cs" />
+    <Compile Include="EmployeesDao.cs" />
+    <Compile Include="GenderDao.cs" />
+    <Compile Include="LineDao.cs" />
+    <Compile Include="MenuItemsDao.cs" />
+    <Compile Include="MesuareDao.cs" />
+    <Compile Include="MoneyDao.cs" />
+    <Compile Include="OfertsDao.cs" />
+    <Compile Include="OfertsDetailDao.cs" />
+    <Compile Include="OriginDao.cs" />
+    <Compile Include="PaisDao.cs" />
+    <Compile Include="PayDao.cs" />
+    <Compile Include="ProducDao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderDao.cs" />
+    <Compile Include="ProvinceDao.cs" />
+    <Compile Include="PurcharseDetailsDao.cs" />
+    <Compile Include="PurchaseDao.cs" />
+    <Compile Include="SalesCancellationsDao.cs" />
+    <Compile Include="SalesDao.cs" />
+    <Compile Include="SalesDetailDao.cs" />
+    <Compile Include="StateDao.cs" />
+    <Compile Include="StateGeneralDao.cs" />
+    <Compile Include="TypePayDao.cs" />
+    <Compile Include="UserAccessDao.cs" />
+    <Compile Include="UserDao.cs" />
+    <Compile Include="UserTypeDao.cs" />
+    <Compile Include="UtilityDao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonSupport\CommonSupport.csproj">
+      <Project>{bdf4cbf0-5bc8-4418-91d2-8df85401514b}</Project>
+      <Name>CommonSupport</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

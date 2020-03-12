@@ -1,0 +1,7 @@
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\bin\Debug\FuntionalLayer.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\bin\Debug\FuntionalLayer.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\bin\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\bin\Debug\CommonSupport.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\obj\Debug\FuntionalLayer.csprojResolveAssemblyReference.cache
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\obj\Debug\FuntionalLayer.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\FuntionalLayer\obj\Debug\FuntionalLayer.pdb

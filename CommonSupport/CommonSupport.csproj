@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDF4CBF0-5BC8-4418-91D2-8DF85401514B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommonSupport</RootNamespace>
+    <AssemblyName>CommonSupport</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityDashbordLayer\DashboardEntity.cs" />
+    <Compile Include="EntityLayer\AccountSeatDetEntity.cs" />
+    <Compile Include="EntityLayer\AccountSeatEntity.cs" />
+    <Compile Include="EntityLayer\ActivityEntity.cs" />
+    <Compile Include="EntityLayer\AreaEntity.cs" />
+    <Compile Include="EntityLayer\BillingDetailEntity.cs" />
+    <Compile Include="EntityLayer\BillingEntity.cs" />
+    <Compile Include="EntityLayer\BillingTypeEntity.cs" />
+    <Compile Include="EntityLayer\BonusEntity.cs" />
+    <Compile Include="EntityLayer\CashEntity.cs" />
+    <Compile Include="EntityLayer\CashOutputEntity.cs" />
+    <Compile Include="EntityLayer\ChartCountEntity.cs" />
+    <Compile Include="EntityLayer\CivilStatusEntity.cs" />
+    <Compile Include="EntityLayer\ClassEntity.cs" />
+    <Compile Include="EntityLayer\CompanyEntity.cs" />
+    <Compile Include="EntityLayer\CountEntity.cs" />
+    <Compile Include="EntityLayer\CustumerEntity.cs" />
+    <Compile Include="EntityLayer\DashwoardEntity.cs" />
+    <Compile Include="EntityLayer\DetailSalesEntity.cs" />
+    <Compile Include="EntityLayer\DistricEntity.cs" />
+    <Compile Include="EntityLayer\DocumentTypeEntity.cs" />
+    <Compile Include="EntityLayer\EmployeesEntity.cs" />
+    <Compile Include="EntityLayer\GenderEntity.cs" />
+    <Compile Include="EntityLayer\LineEntity.cs" />
+    <Compile Include="EntityLayer\MaxID.cs" />
+    <Compile Include="EntityLayer\MenuItemsEntity.cs" />
+    <Compile Include="EntityLayer\MesuareEntity.cs" />
+    <Compile Include="EntityLayer\MoneyEntity.cs" />
+    <Compile Include="EntityLayer\OfertsDetailEntity.cs" />
+    <Compile Include="EntityLayer\OfertsEntity.cs" />
+    <Compile Include="EntityLayer\OriginEntity.cs" />
+    <Compile Include="EntityLayer\PaisEntity.cs" />
+    <Compile Include="EntityLayer\PayEntity.cs" />
+    <Compile Include="EntityLayer\ProductEntity.cs" />
+    <Compile Include="EntityLayer\ProviderEntity.cs" />
+    <Compile Include="EntityLayer\ProvinceEntity.cs" />
+    <Compile Include="EntityLayer\PurcharseDetailsEntity.cs" />
+    <Compile Include="EntityLayer\PurcharseEntity.cs" />
+    <Compile Include="EntityLayer\SalesCancellationsEntity.cs" />
+    <Compile Include="EntityLayer\SalesEntity.cs" />
+    <Compile Include="EntityLayer\StateEntity.cs" />
+    <Compile Include="EntityLayer\StateEntityGeneral.cs" />
+    <Compile Include="EntityLayer\TypePayEntity.cs" />
+    <Compile Include="EntityLayer\UserAccessEntity.cs" />
+    <Compile Include="EntityLayer\UserEntity.cs" />
+    <Compile Include="EntityLayer\UserPrivilegesEntity.cs" />
+    <Compile Include="EntityLayer\UserTypeEntity.cs" />
+    <Compile Include="EntityLayer\UtilityEntity.cs" />
+    <Compile Include="UserLoginCache.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

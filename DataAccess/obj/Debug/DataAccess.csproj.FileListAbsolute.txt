@@ -1,0 +1,7 @@
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\bin\Debug\DataAccess.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\bin\Debug\DataAccess.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\bin\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\bin\Debug\CommonSupport.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\obj\Debug\DataAccess.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\DataAccess\obj\Debug\DataAccess.pdb

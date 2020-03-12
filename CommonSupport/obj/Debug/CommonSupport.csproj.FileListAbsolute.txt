@@ -1,0 +1,5 @@
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\bin\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\bin\Debug\CommonSupport.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.csprojResolveAssemblyReference.cache

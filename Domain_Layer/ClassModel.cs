@@ -16,10 +16,10 @@ namespace Domain_Layer
             return dao.ListClass(condition);
         }
 
-        public string NuevoCod(MaxID obj)
+        public double NuevoCod()
         {
             ClassDao dao = new ClassDao();
-            return dao.NuevoCod(obj);
+            return dao.NuevoCod();
         }
 
         public void InsertClass(ClassEntity Entity)

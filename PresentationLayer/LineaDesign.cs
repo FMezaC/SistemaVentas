@@ -75,8 +75,7 @@ namespace PresentationLayer
         private void btnNew_Click(object sender, EventArgs e)
         {
             LineModel model = new LineModel();
-            MaxID ID = new MaxID();
-            textBox1.Text =Convert.ToString(model.NewID(ID));
+            textBox1.Text =Convert.ToString(model.NewID());
             btnGrabar.Text = "Registrar";
             panel1.Visible = true;
         }

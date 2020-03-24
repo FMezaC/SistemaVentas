@@ -13,5 +13,6 @@ namespace CommonSupport
         public static string nombre { set; get; }
         public static string apellidos { set; get; }
         public static string NumDocum { set; get; }
+        public static string Sucursal { set; get; }
     }
 }

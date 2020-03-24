@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashClosingDesign));
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtFechaApe = new System.Windows.Forms.TextBox();
@@ -36,7 +37,6 @@
             this.txtArqueo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMoneda = new System.Windows.Forms.TextBox();
-            this.btnSaved = new System.Windows.Forms.Button();
             this.txtVentas = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBillete = new System.Windows.Forms.TextBox();
@@ -55,7 +55,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtFechCierre = new System.Windows.Forms.TextBox();
@@ -63,10 +62,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label9
@@ -134,19 +142,6 @@
             this.txtMoneda.TabIndex = 6;
             this.txtMoneda.Text = "0";
             this.txtMoneda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnSaved
-            // 
-            this.btnSaved.BackColor = System.Drawing.Color.Green;
-            this.btnSaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaved.ForeColor = System.Drawing.Color.White;
-            this.btnSaved.Location = new System.Drawing.Point(207, 270);
-            this.btnSaved.Name = "btnSaved";
-            this.btnSaved.Size = new System.Drawing.Size(156, 32);
-            this.btnSaved.TabIndex = 4;
-            this.btnSaved.Text = "Grabar";
-            this.btnSaved.UseVisualStyleBackColor = false;
-            this.btnSaved.Click += new System.EventHandler(this.btnSaved_Click);
             // 
             // txtVentas
             // 
@@ -223,14 +218,13 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtMoneda);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.btnSaved);
             this.groupBox2.Controls.Add(this.txtVentas);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtBillete);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 238);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(411, 310);
+            this.groupBox2.Size = new System.Drawing.Size(411, 275);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             // 
@@ -343,7 +337,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -351,25 +344,12 @@
             this.panel1.Size = new System.Drawing.Size(457, 39);
             this.panel1.TabIndex = 4;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Red;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(414, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(73, 4);
+            this.label1.Location = new System.Drawing.Point(97, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(254, 31);
             this.label1.TabIndex = 4;
@@ -431,11 +411,155 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // toolStripDropDownButton3
+            // 
+            this.toolStripDropDownButton3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripDropDownButton3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
+            this.toolStripDropDownButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(137, 51);
+            this.toolStripDropDownButton3.Spring = true;
+            this.toolStripDropDownButton3.Text = "Salir";
+            this.toolStripDropDownButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripDropDownButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripDropDownButton2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(110, 51);
+            this.toolStripDropDownButton2.Spring = true;
+            this.toolStripDropDownButton2.Text = "Guardar";
+            this.toolStripDropDownButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripDropDownButton1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(110, 51);
+            this.toolStripDropDownButton1.Spring = true;
+            this.toolStripDropDownButton1.Text = "Imprimir";
+            this.toolStripDropDownButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.AllowItemReorder = true;
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 516);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusStrip1.Size = new System.Drawing.Size(457, 56);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripStatusLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel1.Image")));
+            this.toolStripStatusLabel1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStatusLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(110, 51);
+            this.toolStripStatusLabel1.Spring = true;
+            this.toolStripStatusLabel1.Text = "Salir";
+            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripStatusLabel1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripStatusLabel2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel2.Image")));
+            this.toolStripStatusLabel2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStatusLabel2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(110, 51);
+            this.toolStripStatusLabel2.Spring = true;
+            this.toolStripStatusLabel2.Text = "Guardar";
+            this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripStatusLabel2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripStatusLabel3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel3.Image")));
+            this.toolStripStatusLabel3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStatusLabel3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(110, 51);
+            this.toolStripStatusLabel3.Spring = true;
+            this.toolStripStatusLabel3.Text = "Imprimir";
+            this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripStatusLabel3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripStatusLabel4.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripStatusLabel4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusLabel4.Image")));
+            this.toolStripStatusLabel4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStatusLabel4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(110, 51);
+            this.toolStripStatusLabel4.Spring = true;
+            this.toolStripStatusLabel4.Text = "Listar";
+            this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripStatusLabel4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // CashClosingDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 572);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -450,6 +574,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -463,7 +589,6 @@
         private System.Windows.Forms.TextBox txtArqueo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtMoneda;
-        private System.Windows.Forms.Button btnSaved;
         private System.Windows.Forms.TextBox txtVentas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBillete;
@@ -472,7 +597,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtFechCierre;
@@ -490,5 +614,13 @@
         private System.Windows.Forms.TextBox txtFaltante;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripDropDownButton3;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
     }
 }

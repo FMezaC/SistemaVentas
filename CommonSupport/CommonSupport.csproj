@@ -49,13 +49,15 @@
     <Compile Include="EntityLayer\BillingEntity.cs" />
     <Compile Include="EntityLayer\BillingTypeEntity.cs" />
     <Compile Include="EntityLayer\BonusEntity.cs" />
+    <Compile Include="EntityLayer\BranchOfficeEntity.cs" />
     <Compile Include="EntityLayer\CashEntity.cs" />
     <Compile Include="EntityLayer\CashOutputEntity.cs" />
     <Compile Include="EntityLayer\ChartCountEntity.cs" />
     <Compile Include="EntityLayer\CivilStatusEntity.cs" />
     <Compile Include="EntityLayer\ClassEntity.cs" />
     <Compile Include="EntityLayer\CompanyEntity.cs" />
-    <Compile Include="EntityLayer\CountEntity.cs" />
+    <Compile Include="EntityLayer\EmployeePaymentEntity.cs" />
+    <Compile Include="EntityLayer\OrdersEntity.cs" />
     <Compile Include="EntityLayer\CustumerEntity.cs" />
     <Compile Include="EntityLayer\DashwoardEntity.cs" />
     <Compile Include="EntityLayer\DetailSalesEntity.cs" />
@@ -64,7 +66,6 @@
     <Compile Include="EntityLayer\EmployeesEntity.cs" />
     <Compile Include="EntityLayer\GenderEntity.cs" />
     <Compile Include="EntityLayer\LineEntity.cs" />
-    <Compile Include="EntityLayer\MaxID.cs" />
     <Compile Include="EntityLayer\MenuItemsEntity.cs" />
     <Compile Include="EntityLayer\MesuareEntity.cs" />
     <Compile Include="EntityLayer\MoneyEntity.cs" />
@@ -76,8 +77,6 @@
     <Compile Include="EntityLayer\ProductEntity.cs" />
     <Compile Include="EntityLayer\ProviderEntity.cs" />
     <Compile Include="EntityLayer\ProvinceEntity.cs" />
-    <Compile Include="EntityLayer\PurcharseDetailsEntity.cs" />
-    <Compile Include="EntityLayer\PurcharseEntity.cs" />
     <Compile Include="EntityLayer\SalesCancellationsEntity.cs" />
     <Compile Include="EntityLayer\SalesEntity.cs" />
     <Compile Include="EntityLayer\StateEntity.cs" />

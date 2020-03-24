@@ -19,7 +19,7 @@ namespace DataAccess
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
                 cmd.CommandText = @"select CODEST, ESTADO from ESTADO_PRODUCTO 
-                where ESTADO like '%' + @variable + '%' ";
+                where ESTADO like '%' + @variable + '%' order by ESTADO asc";
                 cmd.Parameters.AddWithValue("@variable", condition);
                 cmd.CommandType = CommandType.Text;
                 SqlDataReader read = cmd.ExecuteReader();

@@ -17,43 +17,20 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void PurchasingDesing_Load(object sender, EventArgs e)
         {
-            this.Close();
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnListar_Click(object sender, EventArgs e)
         {
             PurchasingUpdateNew desing = new PurchasingUpdateNew();
             desing.ShowDialog();
         }
 
-        private void PurchasingDesing_Load(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            DateTime stardate = Convert.ToDateTime(dateTimePicker1.Value.ToShortDateString());
-            DateTime enddate = Convert.ToDateTime(dateTimePicker2.Value.ToShortDateString());
-            ListDataPurcharse(stardate, enddate);
-        }
-
-        private void ListDataPurcharse(DateTime StarDate, DateTime EndDate)
-        {
-            PurcharseModel model = new PurcharseModel();
-            dataGridReportes.DataSource = model.ListPurcharse(StarDate, EndDate);
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime stardate = Convert.ToDateTime(dateTimePicker1.Value.ToShortDateString());
-            DateTime enddate = Convert.ToDateTime(dateTimePicker2.Value.ToShortDateString());
-            ListDataPurcharse(stardate, enddate);
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime stardate = Convert.ToDateTime(dateTimePicker1.Value.ToShortDateString());
-            DateTime enddate = Convert.ToDateTime(dateTimePicker2.Value.ToShortDateString());
-            ListDataPurcharse(stardate, enddate);
+            this.Close();
         }
     }
 }

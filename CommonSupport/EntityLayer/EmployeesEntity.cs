@@ -31,5 +31,7 @@ namespace CommonSupport.EntityLayer
         public string _USUARIO { set; get; }
         public string _UPASSW { set; get; }
         public byte _EMPIMG { set; get; }
+        public int _IDAUSUC { set; get; }
+        public string _SUCUR { set; get; }
     }
 }

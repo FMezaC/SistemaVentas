@@ -41,6 +41,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.codprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._IDDESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,12 +57,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.codprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._IDDESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -193,6 +193,49 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // codprod
+            // 
+            this.codprod.DataPropertyName = "_CODPRO";
+            this.codprod.HeaderText = "CODIGO";
+            this.codprod.Name = "codprod";
+            this.codprod.Width = 130;
+            // 
+            // descrip
+            // 
+            this.descrip.DataPropertyName = "_DESCRIP";
+            this.descrip.HeaderText = "DESCRIPCIÓN";
+            this.descrip.Name = "descrip";
+            this.descrip.Width = 290;
+            // 
+            // cant
+            // 
+            this.cant.DataPropertyName = "_CANPRO";
+            this.cant.HeaderText = "CANTIDAD";
+            this.cant.Name = "cant";
+            // 
+            // PreUnit
+            // 
+            this.PreUnit.DataPropertyName = "_PREUNT";
+            this.PreUnit.HeaderText = "PRECIO UNITARIO";
+            this.PreUnit.Name = "PreUnit";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "ELIMINAR";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.UseColumnTextForButtonValue = true;
+            this.btnEliminar.Width = 80;
+            // 
+            // _IDDESC
+            // 
+            this._IDDESC.DataPropertyName = "_IDDESC";
+            this._IDDESC.HeaderText = "_IDDESC";
+            this._IDDESC.Name = "_IDDESC";
+            this._IDDESC.Visible = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textBox3);
@@ -229,6 +272,7 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(656, 36);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(109, 20);
@@ -236,6 +280,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(472, 36);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
@@ -282,49 +327,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // codprod
-            // 
-            this.codprod.DataPropertyName = "_CODPRO";
-            this.codprod.HeaderText = "CODIGO";
-            this.codprod.Name = "codprod";
-            this.codprod.Width = 130;
-            // 
-            // descrip
-            // 
-            this.descrip.DataPropertyName = "_DESCRIP";
-            this.descrip.HeaderText = "DESCRIPCIÓN";
-            this.descrip.Name = "descrip";
-            this.descrip.Width = 290;
-            // 
-            // cant
-            // 
-            this.cant.DataPropertyName = "_CANPRO";
-            this.cant.HeaderText = "CANTIDAD";
-            this.cant.Name = "cant";
-            // 
-            // PreUnit
-            // 
-            this.PreUnit.DataPropertyName = "_PREUNT";
-            this.PreUnit.HeaderText = "PRECIO UNITARIO";
-            this.PreUnit.Name = "PreUnit";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "ELIMINAR";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnEliminar.Text = "ELIMINAR";
-            this.btnEliminar.UseColumnTextForButtonValue = true;
-            this.btnEliminar.Width = 80;
-            // 
-            // _IDDESC
-            // 
-            this._IDDESC.DataPropertyName = "_IDDESC";
-            this._IDDESC.HeaderText = "_IDDESC";
-            this._IDDESC.Name = "_IDDESC";
-            this._IDDESC.Visible = false;
             // 
             // OfertsNewUpdateDesign
             // 

@@ -56,6 +56,9 @@ namespace PresentationLayer
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             if (textBox2.Text != string.Empty)
             {
                double Devolu = Convert.ToDouble(textBox2.Text) - Convert.ToDouble(textBox1.Text);
@@ -63,9 +66,8 @@ namespace PresentationLayer
                     textBox3.Text = "0";
                 else
                 {
-                    string split = Convert.ToString(Devolu.ToString("C2", CultureInfo.CurrentCulture));
-                    int until = split.Length - 2;
-                    textBox3.Text = Convert.ToString(split.Substring(0, until));
+                    string split = string.Format(nfi, "{0:C}", Devolu);
+                    textBox3.Text = split;
                 }
                 double Deuda = Convert.ToDouble(textBox1.Text) - Convert.ToDouble(textBox2.Text);
                 if (Deuda >= 0)
@@ -79,6 +81,13 @@ namespace PresentationLayer
 
         public string Clientes, IGV, Descuento, opciones;
         public int ID;
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+                e.Handled = true;
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (textBox2.Text != string.Empty)
@@ -119,29 +128,22 @@ namespace PresentationLayer
             CompanyModel model = new CompanyModel();
             List<CompanyEntity> MyList = new List<CompanyEntity>();
             MyList = model.ListCompany();
-            string Nombre = "", Direcc = "", Telf = "", RUC = "", Email = "", Rasoci = "";
             for (int i = 0; i < MyList.Count; i++)
             {
-                Nombre = MyList[i]._NOMEMP;
-                Direcc = MyList[i]._DIRECC;
-                Telf = MyList[i]._TELEF;
-                RUC = Convert.ToString(MyList[i]._NUMRUC);
-                Email = MyList[i]._CORREO;
-                Rasoci = MyList[i]._RASOCI;
+                ticket.TextoCentro(MyList[i]._NOMEMP);
+                ticket.TextoCentro("RAZ. SOCIAL: " + MyList[i]._RASOCI);
+                ticket.TextoCentro("DIREC: " + MyList[i]._DIRECC);
+                ticket.TextoCentro("TELF: " + MyList[i]._TELEF);
+                ticket.TextoCentro("RUC: " + Convert.ToString(MyList[i]._NUMRUC));
+                ticket.TextoCentro("EMAIL: " + MyList[i]._CORREO);
+                ticket.Textoizquierda("");
+                ticket.textoExtremo("CAJA", "TICKET Nº " + ID);
+                ticket.LineasAsterisco();
             }
-            ticket.TextoCentro(Nombre);
-            ticket.TextoCentro("RAZ. SOCIAL: " + Rasoci);
-            ticket.TextoCentro("DIREC: " + Direcc);
-            ticket.TextoCentro("TELF: " + Telf);
-            ticket.TextoCentro("RUC: " + RUC);
-            ticket.TextoCentro("EMAIL: " + Email);
-            ticket.Textoizquierda("");
-            ticket.textoExtremo("CAJA", "TICKET N# 0001251");
-            ticket.LineasAsterisco();
+            
 
             // Subcabecera
-            ticket.Textoizquierda("");
-            ticket.Textoizquierda("CAJERO: " + UserLoginCache.nombre + " " + UserLoginCache.apellidos);
+            ticket.Textoizquierda("CAJERO: " + UserLoginCache.user);
             ticket.Textoizquierda("CLIENTE: " + Clientes);
             ticket.Textoizquierda("");
             ticket.textoExtremo("FECHA: " + DateTime.Now.ToShortDateString(), "HORA: " + DateTime.Now.ToShortTimeString());

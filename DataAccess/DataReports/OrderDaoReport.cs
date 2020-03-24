@@ -18,11 +18,12 @@ namespace DataAccess.DataReports
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
                 cmd.CommandText = @"SELECT DTV.CODPRO, DTV.DESPRO,CAST(VNT.FECHVE AS DATE)FECH_VENT,
-                VNT.IGV, DTV.PREUNT, SUM(DTV.CANPRO)CANTIDAD,
-                DTV.PREUNT * SUM(DTV.CANPRO) + VNT.IGV AS TOTTAL FROM VENTA VNT
+                SUM((PR.IMPUEST * DTV.PREUNT)* DTV.CANPRO / 100 )IMPUESTO, DTV.PREUNT, SUM(DTV.CANPRO)CANTIDAD,
+                DTV.PREUNT * SUM(DTV.CANPRO) +( PR.IMPUEST * DTV.PREUNT / 100 )AS TOTTAL FROM VENTA VNT
                 INNER JOIN DETALLE_VENTA DTV ON VNT.IDVENT = DTV.IDVENT
+				INNER JOIN PRODUCTOS PR ON PR.CODPROD = DTV.CODPRO
                 WHERE CAST(VNT.FECHVE AS DATE) BETWEEN  @fromDATE AND @ToDATE
-                GROUP BY DTV.CODPRO, DTV.DESPRO, CAST(VNT.FECHVE AS DATE), DTV.PREUNT, VNT.IGV
+                GROUP BY DTV.CODPRO, DTV.DESPRO, CAST(VNT.FECHVE AS DATE), DTV.PREUNT, PR.IMPUEST
                 ORDER BY CODPRO ASC";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@fromDATE", SqlDbType.Date).Value = fromDATE;

@@ -38,7 +38,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripIP = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSu = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolstepUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -89,7 +89,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.labelCirculo2 = new VentaProductos.LabelCirculo();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -102,6 +101,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labelCirculo2 = new VentaProductos.LabelCirculo();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -134,7 +134,7 @@
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripIP,
+            this.toolStripSu,
             this.toolStripStatusLabel3,
             this.toolstepUser,
             this.toolStripStatusLabel5,
@@ -151,14 +151,14 @@
             // 
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(89, 25);
-            this.toolStripStatusLabel1.Text = "Servidor";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(87, 25);
+            this.toolStripStatusLabel1.Text = "Sucursal";
             // 
-            // toolStripIP
+            // toolStripSu
             // 
-            this.toolStripIP.Name = "toolStripIP";
-            this.toolStripIP.Size = new System.Drawing.Size(124, 25);
-            this.toolStripIP.Text = "192.168.1.255";
+            this.toolStripSu.Name = "toolStripSu";
+            this.toolStripSu.Size = new System.Drawing.Size(83, 25);
+            this.toolStripSu.Text = "Sucursal";
             // 
             // toolStripStatusLabel3
             // 
@@ -679,15 +679,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos Usuario";
             // 
-            // labelCirculo2
-            // 
-            this.labelCirculo2.BackColor = System.Drawing.Color.Black;
-            this.labelCirculo2.Image = ((System.Drawing.Image)(resources.GetObject("labelCirculo2.Image")));
-            this.labelCirculo2.Location = new System.Drawing.Point(94, 22);
-            this.labelCirculo2.Name = "labelCirculo2";
-            this.labelCirculo2.Size = new System.Drawing.Size(97, 84);
-            this.labelCirculo2.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -843,6 +834,15 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
+            // labelCirculo2
+            // 
+            this.labelCirculo2.BackColor = System.Drawing.Color.Black;
+            this.labelCirculo2.Image = ((System.Drawing.Image)(resources.GetObject("labelCirculo2.Image")));
+            this.labelCirculo2.Location = new System.Drawing.Point(94, 22);
+            this.labelCirculo2.Name = "labelCirculo2";
+            this.labelCirculo2.Size = new System.Drawing.Size(97, 84);
+            this.labelCirculo2.TabIndex = 2;
+            // 
             // MenuPrincipalMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -854,6 +854,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -891,7 +892,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripIP;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripSu;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolstepUser;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;

@@ -27,8 +27,7 @@ namespace PresentationLayer
 
         private void OfertsNewUpdateDesign_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
+            
         }
 
         public void estado()
@@ -53,12 +52,11 @@ namespace PresentationLayer
         public void NewOfertInsert()
         {
             int NewID;
-            MaxID jID = new MaxID();
             OfertsEntity Entity = new OfertsEntity();
             OfertsModel model = new OfertsModel();
             if (btnNew.Text != "Grabar")
             {
-                NewID = Convert.ToInt32(model.NewID(jID));
+                NewID = Convert.ToInt32(model.NewID());
                 Entity._ID = NewID;
                 Entity._DESCUENTO = Convert.ToDecimal(textBox3.Text);
                 Entity._TIPODESCT = textBox2.Text;

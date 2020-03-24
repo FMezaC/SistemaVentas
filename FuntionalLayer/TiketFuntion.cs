@@ -257,7 +257,7 @@ namespace FuntionalLayer
                     }
                     elemento += espacio + cantidad.ToString();
 
-                    norEspacio = (7 - cantidad.ToString().Length);
+                    norEspacio = (7 - precio.ToString().Length);
                     espacio = "";
                     for (int i = 0; i < norEspacio; i++)
                     {

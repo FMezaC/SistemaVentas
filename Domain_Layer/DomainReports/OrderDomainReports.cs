@@ -15,6 +15,7 @@ namespace Domain_Layer.DomainReports
         public List<SalesListening> SalesListening { get; private set; }
         public List<NetSalesByPeriod> NetSalesByPeriod { get; private set; }
         public double TotalNetSales { get; private set; }
+        public double TotalImpust { get; private set; }
 
         // NetBods
         public void CreateSalesOrderReport(DateTime fromDATE, DateTime ToDATE)
@@ -43,6 +44,7 @@ namespace Domain_Layer.DomainReports
 
                 // Calulate Total Net Sales
                 TotalNetSales += Convert.ToDouble(ResultRows[6]);
+                TotalImpust += Convert.ToDouble(ResultRows[3]);
             }
 
             // create net sales by period

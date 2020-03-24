@@ -35,9 +35,8 @@ namespace PresentationLayer
 
         private void MaxIDGenerate()
         {
-            MaxID id = new MaxID();
-            CountModel Mcount = new CountModel();
-            textBox1.Text = Convert.ToString(Mcount.MaxIdCount(id));
+            OrdersModel Mcount = new OrdersModel();
+            textBox1.Text = Convert.ToString(Mcount.MaxIdCount());
             textBox11.Text = Convert.ToString(DateTime.Now.Year.ToString() + " - " + DateTime.Now.Month.ToString());
         }
         private void LoadMoney()
@@ -176,6 +175,9 @@ namespace PresentationLayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             double igv = 0;
             double subTot = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -188,7 +190,7 @@ namespace PresentationLayer
                 // calcula subtotal
                 suma = suma + Convert.ToDouble(row.Cells["PREUNIT"].Value) * Convert.ToDouble(row.Cells["CantProd"].Value);
                 // comvierte la suma en un formato moneda
-                string Total = Convert.ToString(suma.ToString("C2", CultureInfo.CurrentCulture));
+                string Total = string.Format(nfi, "{0:C}", suma);
                 int hasta = Total.Length - 2;
                 //añadimos el subtotal sin igv
                 row.Cells["SubTot"].Value = Convert.ToString(Total.Substring(0, hasta));
@@ -209,46 +211,7 @@ namespace PresentationLayer
         //Metodo de Insertar
         private void button1_Click(object sender, EventArgs e)
         {
-            if (validarTextbox())
-            {
-                foreach (DataGridViewRow rows in dataGridView1.Rows)
-                {
-                    PurcharseDetailsEntity BDEntity = new PurcharseDetailsEntity();
-                    BDEntity.IDPEDI = Convert.ToInt32(textBox1.Text);
-                    BDEntity.CODPRO = rows.Cells["CodProd"].Value.ToString();
-                    BDEntity.DESCRI = rows.Cells["descrip"].Value.ToString();
-                    BDEntity.UNIMED = rows.Cells["UniMedi"].Value.ToString();
-                    BDEntity.IMPIGV = Convert.ToDouble(rows.Cells["impuesto"].Value);
-                    BDEntity.CANTID = Convert.ToInt32(rows.Cells["CantProd"].Value);
-                    BDEntity.PREUNI = Convert.ToDouble(rows.Cells["PREUNIT"].Value);
-                    BDEntity.SUBTOT = Convert.ToDouble(rows.Cells["SubTot"].Value);
-                    PurcharseDetailsModel BDModel = new PurcharseDetailsModel();
-                    BDModel.InsertPurchaseDetailsModel(BDEntity);
-                }
-                PurcharseEntity Entity = new PurcharseEntity();
-                Entity.NUMPED = Convert.ToInt32(textBox1.Text);
-                Entity.IDCUENT = Convert.ToInt32(NUMCUENT);
-                Entity.IDPROVE = Convert.ToInt32(textBox4.Text);
-                Entity.IDTIPPA = Convert.ToInt32(comboBox1.SelectedValue);
-                Entity.IDTIPMO = Convert.ToInt32(comboBox2.SelectedValue);
-                Entity.GLOSA = textBox6.Text;
-                Entity.FCHEMI = dateTimePicker1.Value;
-                Entity.FCHVEN = dateTimePicker2.Value;
-                Entity.ESTADO = comboBox3.Text;
-                Entity.SUBTOT = Convert.ToDouble(textBox8.Text);
-                Entity.PEDIGV = Convert.ToDouble(textBox10.Text);
-                Entity.DESCUE = Convert.ToDouble(textBox13.Text);
-                Entity.TOTPAG = Convert.ToDouble(textBox3.Text);
-                PurcharseModel model = new PurcharseModel();
-                model.InsertPurcharseModel(Entity);
-
-                FlaatSlanshDesign design = new FlaatSlanshDesign();
-                design.StartPosition = FormStartPosition.CenterScreen;
-                design.title = "Generando Pedido...";
-                design.ShowDialog();
-                ClearItems();
-                MaxIDGenerate();
-            }
+            
         }
 
         // Metodo de verificar

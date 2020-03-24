@@ -20,15 +20,11 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void CashClosingDesign_Load(object sender, EventArgs e)
         {
             ListData();
             ListMoney();
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListData()
@@ -52,13 +48,6 @@ namespace PresentationLayer
             comboBox1.DataSource = model.ListMoney("");
             comboBox1.ValueMember = "_ID";
             comboBox1.DisplayMember = "_MONEY";
-        }
-
-        private void btnSaved_Click(object sender, EventArgs e)
-        {
-            SavedCashData();
-            UpdateSalesBilling();
-            this.Close();
         }
 
         private void SavedCashData()
@@ -103,6 +92,17 @@ namespace PresentationLayer
                     txtSobrante.Text = "0"; txtFaltante.Text = "0";
                 }
             }
+        }
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            SavedCashData();
+            UpdateSalesBilling();
+            this.Close();
         }
     }
 }

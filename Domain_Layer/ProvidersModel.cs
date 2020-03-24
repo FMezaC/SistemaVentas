@@ -16,10 +16,10 @@ namespace Domain_Layer
             return dao.ListProviders(Condition);
         }
 
-        public double MaxID(MaxID ID)
+        public double MaxID()
         {
             ProviderDao dao = new ProviderDao();
-            return dao.MaxID(ID);
+            return dao.MaxID();
         }
 
         public void InsertProvider(ProviderEntity Insert)

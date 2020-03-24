@@ -48,7 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>letra-m.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>PresentationLayer.Program</StartupObject>
@@ -179,12 +180,6 @@
     <Compile Include="CustumerDesign.Designer.cs">
       <DependentUpon>CustumerDesign.cs</DependentUpon>
     </Compile>
-    <Compile Include="DebitNoteDesign.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebitNoteDesign.Designer.cs">
-      <DependentUpon>DebitNoteDesign.cs</DependentUpon>
-    </Compile>
     <Compile Include="DistricDesign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +197,12 @@
     </Compile>
     <Compile Include="EgreesDesign.Designer.cs">
       <DependentUpon>EgreesDesign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeePaymentsDesign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeePaymentsDesign.Designer.cs">
+      <DependentUpon>EmployeePaymentsDesign.cs</DependentUpon>
     </Compile>
     <Compile Include="EmployeesDesign.cs">
       <SubType>Form</SubType>
@@ -382,12 +383,6 @@
     <Compile Include="SalesPayOptions.Designer.cs">
       <DependentUpon>SalesPayOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScheduleDesign.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScheduleDesign.Designer.cs">
-      <DependentUpon>ScheduleDesign.cs</DependentUpon>
-    </Compile>
     <Compile Include="SearchDesign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,9 +470,6 @@
     <EmbeddedResource Include="CustumerDesign.resx">
       <DependentUpon>CustumerDesign.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DebitNoteDesign.resx">
-      <DependentUpon>DebitNoteDesign.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DistricDesign.resx">
       <DependentUpon>DistricDesign.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EgreesDesign.resx">
       <DependentUpon>EgreesDesign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeePaymentsDesign.resx">
+      <DependentUpon>EmployeePaymentsDesign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesDesign.resx">
       <DependentUpon>EmployeesDesign.cs</DependentUpon>
@@ -543,6 +538,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ProviderDesign.resx">
       <DependentUpon>ProviderDesign.cs</DependentUpon>
@@ -583,9 +579,6 @@
     <EmbeddedResource Include="SalesPayOptions.resx">
       <DependentUpon>SalesPayOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScheduleDesign.resx">
-      <DependentUpon>ScheduleDesign.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SearchDesign.resx">
       <DependentUpon>SearchDesign.cs</DependentUpon>
     </EmbeddedResource>
@@ -608,7 +601,6 @@
     <None Include="Properties\DataSources\Domain_Layer.DomainReports.OrderDomainReports.datasource" />
     <None Include="Properties\DataSources\Domain_Layer.DomainReports.ProducListening.datasource" />
     <None Include="Properties\DataSources\Domain_Layer.DomainReports.ProductBySales.datasource" />
-    <None Include="Properties\DataSources\Domain_Layer.DomainReports.ProductByStock.datasource" />
     <None Include="Properties\DataSources\Domain_Layer.DomainReports.ProductsDomainReport.datasource" />
     <None Include="Properties\DataSources\Domain_Layer.DomainReports.SalesListening.datasource" />
     <None Include="Properties\Settings.settings">
@@ -639,9 +631,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="letra-m.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
@@ -653,7 +642,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

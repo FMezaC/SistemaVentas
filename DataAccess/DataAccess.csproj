@@ -48,6 +48,7 @@
     <Compile Include="BillingDao.cs" />
     <Compile Include="BillingTypeDao.cs" />
     <Compile Include="BonusDao.cs" />
+    <Compile Include="BranchOfficeDao.cs" />
     <Compile Include="BuckUpDao.cs" />
     <Compile Include="CashDao.cs" />
     <Compile Include="ChartCountDao.cs" />
@@ -55,7 +56,8 @@
     <Compile Include="ClassDao.cs" />
     <Compile Include="CompanyDao.cs" />
     <Compile Include="ConnectionToSql.cs" />
-    <Compile Include="CountDao.cs" />
+    <Compile Include="EmployeePaymentDao.cs" />
+    <Compile Include="OrdersDao.cs" />
     <Compile Include="CustumerDao.cs" />
     <Compile Include="DataReports\CustumerDaoReports.cs" />
     <Compile Include="DataReports\DashboardDao.cs" />
@@ -78,8 +80,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderDao.cs" />
     <Compile Include="ProvinceDao.cs" />
-    <Compile Include="PurcharseDetailsDao.cs" />
-    <Compile Include="PurchaseDao.cs" />
     <Compile Include="SalesCancellationsDao.cs" />
     <Compile Include="SalesDao.cs" />
     <Compile Include="SalesDetailDao.cs" />

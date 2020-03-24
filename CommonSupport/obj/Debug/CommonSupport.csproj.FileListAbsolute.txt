@@ -3,3 +3,8 @@ D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\bin\Debug\Com
 D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.dll
 D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.pdb
 D:\Software 2018\ProyectoEnterprice\SistemaHoteleria\CommonSupport\obj\Debug\CommonSupport.csprojResolveAssemblyReference.cache
+D:\Software 2018\ProyectoEnterprice\SistemaVentas2020\CommonSupport\bin\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaVentas2020\CommonSupport\bin\Debug\CommonSupport.pdb
+D:\Software 2018\ProyectoEnterprice\SistemaVentas2020\CommonSupport\obj\Debug\CommonSupport.csprojResolveAssemblyReference.cache
+D:\Software 2018\ProyectoEnterprice\SistemaVentas2020\CommonSupport\obj\Debug\CommonSupport.dll
+D:\Software 2018\ProyectoEnterprice\SistemaVentas2020\CommonSupport\obj\Debug\CommonSupport.pdb

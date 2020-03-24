@@ -18,7 +18,8 @@ namespace DataAccess
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
-                cmd.CommandText = "SELECT ISNULL(ID,'')ID, ISNULL(ESTADO,'')ESTAD FROM ESTADO";
+                cmd.CommandText = @"SELECT ISNULL(ID,'')ID, ISNULL(ESTADO,'')ESTAD 
+                FROM ESTADO ORDER BY ESTADO asc";
                 cmd.CommandType = CommandType.Text;
                 SqlDataReader reader = cmd.ExecuteReader();
                 List<StateEntityGeneral> MyList = new List<StateEntityGeneral>();

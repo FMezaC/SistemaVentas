@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain_Layer;
 using CommonSupport.EntityLayer;
+using FuntionalLayer;
 
 namespace PresentationLayer
 {
@@ -18,15 +19,10 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void InventoryDesign_Load(object sender, EventArgs e)
         {
             ListProducts("");
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListProducts(string filter)
@@ -39,10 +35,23 @@ namespace PresentationLayer
         {
             ListProducts(txtBuscar.Text);
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        
+        private void btnSalir_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DownloandExcelFuntion function = new DownloandExcelFuntion();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            ProductModel model = new ProductModel();
+            DataTable table = convert.ToDataTable(model.ListProducts(txtBuscar.Text));
+            string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+            function.BuildExcel(table, appPath + @"-Inventarios.xlsx");
+            //Lamar al backgroundWorker
+            FlaatSlanshDesign desing = new FlaatSlanshDesign();
+            desing.showAlert("Descarga Exitosa...", FlaatSlanshDesign.enmType.Success);
         }
     }
 }

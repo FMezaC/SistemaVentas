@@ -33,6 +33,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.OrderDomainReportsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SalesListeningBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NetSalesByPeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -229,13 +230,16 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "SalesReports";
             reportDataSource1.Value = this.OrderDomainReportsBindingSource;
-            reportDataSource2.Name = "SalesListening";
-            reportDataSource2.Value = this.SalesListeningBindingSource;
-            reportDataSource3.Name = "NetSalesByPeriod";
-            reportDataSource3.Value = this.NetSalesByPeriodBindingSource;
+            reportDataSource2.Name = "NetSalesByPeriod";
+            reportDataSource2.Value = this.NetSalesByPeriodBindingSource;
+            reportDataSource3.Name = "SalesListening";
+            reportDataSource3.Value = this.SalesListeningBindingSource;
+            reportDataSource4.Name = "ResumenTotales";
+            reportDataSource4.Value = this.OrderDomainReportsBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PresentationLayer.ReportsLayer.SalesReportDesign.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(190, 0);
             this.reportViewer1.Name = "reportViewer1";

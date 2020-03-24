@@ -97,10 +97,8 @@ namespace PresentationLayer
         {
             if (Validar())
             {
-                MaxID ID = new MaxID();
-                MyID = ID._MaxIDINT;
                 AccountSeatModel model = new AccountSeatModel();
-                MyID = Convert.ToInt32(model.MaxID(ID));
+                MyID = Convert.ToInt32(model.MaxID());
                 AccountSeatEntity entity = new AccountSeatEntity();
                 entity._IDASI = MyID;
                 entity._NUMASI = textBox1.Text;

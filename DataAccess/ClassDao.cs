@@ -65,10 +65,11 @@ namespace DataAccess
             }
         }
 
-        public string NuevoCod(MaxID ID)
+        public double NuevoCod()
         {
             using (var conect = GetConnection())
             {
+                double ID = 0;
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
@@ -77,9 +78,9 @@ namespace DataAccess
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ID._ClassID = reader[0].ToString();
+                    ID = reader.GetDouble(0);
                 }
-                return ID._ClassID;
+                return ID;
             }
         }
 

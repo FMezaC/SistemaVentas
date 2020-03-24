@@ -26,12 +26,14 @@ namespace DataAccess
                 ISNULL(D.NOMDIS,'')DISTRITO,ISNULL(C.ESTADO,'')ESTADO,
                 ISNULL(NUMCEL,'')NUMCEL,ISNULL(CORREO,'')CORREO,
                 ISNULL(NUMHIJ,'')NUMHIJ,ISNULL(SALARI,'')SALARI, 
-				ISNULL(UT.TIPOUS,'')TIPOUS, ISNULL(USUARI,'')USUARI,ISNULL(US.UPASSW,'')UPASSW
+				ISNULL(UT.TIPOUS,'')TIPOUS, ISNULL(USUARI,'')USUARI,ISNULL(US.UPASSW,'')UPASSW,
+				ISNULL(SU.DESCSU,'')SUCURSAL
                 FROM EMPLEADOS E INNER JOIN GENERO G ON E.IDGEN = G.CODGEN
                 INNER JOIN DISTRITO D ON E.IDDIST = D.IDDIS INNER JOIN ESTADO_CIVIL C 
                 ON E.IDESTCVI = C.ESTCOD INNER JOIN TIP_DOCUMENTO T ON E.IDTIPDOC = T.IDDOC
 				INNER JOIN PROVINCIA PR ON D.IDPROV = PR.IDPR INNER JOIN PAIS PA ON PA.ID = PR.IDPAI
 				INNER JOIN USUARIOS US ON E.NUMDOC = US.NUMDNI INNER JOIN TIP_USUARIO UT ON US.IDTIPO = UT.ID
+				INNER JOIN SUCURSAL SU ON E.IDAUSUC = SU.IDAUSUC
 				WHERE NOMEMP LIKE '%'+@VARIBLE+'%' OR APEPAT LIKE '%'+@VARIBLE+'%' OR APEMAT LIKE '%'+@VARIBLE+'%' ";
                 cmd.Parameters.AddWithValue("@VARIBLE", condition);
                 cmd.CommandType = CommandType.Text;
@@ -61,7 +63,8 @@ namespace DataAccess
                         _SALARI = reader.GetDouble(17),
                         _TIPUSER = reader.GetString(18),
                         _USUARIO = reader.GetString(19),
-                        _UPASSW = reader.GetString(20)
+                        _UPASSW = reader.GetString(20),
+                        _SUCUR = reader.GetString(21)
                     });
                 }
                 return MyList;
@@ -76,9 +79,9 @@ namespace DataAccess
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
                 cmd.CommandText = @"INSERT INTO EMPLEADOS (IDTIPDOC, NUMDOC, NOMEMP, APEPAT, APEMAT, FECHNA, FECHCO,
-				IDGEN, DIRECC, IDDIST, IDESTCVI, NUMCEL, CORREO, NUMHIJ, SALARI, EMPIMG)
+				IDGEN, DIRECC, IDDIST, IDESTCVI, NUMCEL, CORREO, NUMHIJ, SALARI, EMPIMG, IDAUSUC)
 				VALUES(@IDTIPDOC,@NUMDOC,@NOMEMP,@APEPAT,@APEMAT,@FECHNA,
-				@FECHCO,@IDGEN,@DIRECC,@IDDIST,@IDESTCVI,@NUMCEL,@CORREO,@NUMHIJ,@SALARI,NULL)";
+				@FECHCO,@IDGEN,@DIRECC,@IDDIST,@IDESTCVI,@NUMCEL,@CORREO,@NUMHIJ,@SALARI,NULL, @IDAUSUC)";
                 cmd.Parameters.AddWithValue("@IDTIPDOC", Insert._IDTIPD);
                 cmd.Parameters.AddWithValue("@NUMDOC", Insert._NUMDOC);
                 cmd.Parameters.AddWithValue("@NOMEMP", Insert._NOMEMP);
@@ -94,6 +97,7 @@ namespace DataAccess
                 cmd.Parameters.AddWithValue("@CORREO", Insert._CORREO);
                 cmd.Parameters.AddWithValue("@NUMHIJ", Insert._NUMHIJ);
                 cmd.Parameters.AddWithValue("@SALARI", Insert._SALARI);
+                cmd.Parameters.AddWithValue("@IDAUSUC", Insert._IDAUSUC);
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
@@ -109,7 +113,8 @@ namespace DataAccess
                 cmd.CommandText = @"UPDATE EMPLEADOS
                 SET IDTIPDOC = @IDTIPDOC,NUMDOC= @NUMDOC, NOMEMP = @NOMEMP, APEPAT = @APEPAT, APEMAT = @APEMAT,
                 FECHNA = @FECHNA, FECHCO = @FECHCO, IDGEN = @IDGEN, DIRECC = @DIRECC, IDDIST = @IDDIST, IDESTCVI = @IDESTCVI,
-                NUMCEL = @NUMCEL, CORREO = @CORREO, NUMHIJ = @NUMHIJ, SALARI = @SALARI WHERE CODEMP = @ID";
+                NUMCEL = @NUMCEL, CORREO = @CORREO, NUMHIJ = @NUMHIJ, SALARI = @SALARI, IDAUSUC=@IDAUSUC
+				WHERE CODEMP = @ID";
                 cmd.Parameters.AddWithValue("@ID", Update._CODEMP);
                 cmd.Parameters.AddWithValue("@IDTIPDOC", Update._IDTIPD);
                 cmd.Parameters.AddWithValue("@NUMDOC", Update._NUMDOC);
@@ -126,6 +131,7 @@ namespace DataAccess
                 cmd.Parameters.AddWithValue("@CORREO", Update._CORREO);
                 cmd.Parameters.AddWithValue("@NUMHIJ", Update._NUMHIJ);
                 cmd.Parameters.AddWithValue("@SALARI", Update._SALARI);
+                cmd.Parameters.AddWithValue("@IDAUSUC", Update._IDAUSUC);
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }

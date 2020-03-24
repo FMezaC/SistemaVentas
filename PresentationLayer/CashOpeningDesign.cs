@@ -20,15 +20,10 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
-        
-        private void label2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void CashOpeningDesign_Load(object sender, EventArgs e)
         {
              ListDataStart();
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListDataStart()
@@ -44,44 +39,49 @@ namespace PresentationLayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             if (txtBillete.Text != string.Empty && txtMoneda.Text != string.Empty)
             {
                 double Suma = Convert.ToDouble(txtBillete.Text) + Convert.ToDouble(txtMoneda.Text);
-                string Total = Convert.ToString(Suma.ToString("C2", CultureInfo.CurrentCulture));
-                int Hasta = Total.Length - 2;
-                txtTotal.Text = Convert.ToString(Total.Substring(0, Hasta));
+                string Total = string.Format(nfi, "{0:C}", Suma);
+                txtTotal.Text = Total;
             }
             else
                 if (txtBillete.Text != string.Empty)
                 {
                     double Valor = Convert.ToDouble(txtBillete.Text);
-                    string Total2 = Convert.ToString(Valor.ToString("C2", CultureInfo.CurrentCulture));
-                    int Hasta2 = Total2.Length - 2;
-                    txtTotal.Text = Convert.ToString(Total2.Substring(0, Hasta2));
+                    string Total2 = string.Format(nfi, "{0:C}", Valor);
+                    txtTotal.Text = Total2;
                 }
         }
         private void txtMoneda_TextChanged(object sender, EventArgs e)
         {
             // dar formato
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             double moneyIni = Convert.ToDouble(txtMoneda.Text);
-            string moneda = Convert.ToString(moneyIni.ToString("C2", CultureInfo.CurrentCulture));
-            int split = moneda.Length - 2;
-            txtMoneda.Text = Convert.ToString(moneda.Substring(0, split));
+            string moneda = string.Format(nfi, "{0:C}", moneyIni);
+            txtMoneda.Text = moneda;
         }
 
         private void txtBillete_MouseLeave(object sender, EventArgs e)
         {
             // Aqui formato de moneda
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             if (txtBillete.Text != string.Empty)
             {
                 double montoIni = Convert.ToDouble(txtBillete.Text);
-                string Billete = Convert.ToString(montoIni.ToString("C2", CultureInfo.CurrentCulture));
-                int split = Billete.Length - 2;
-                txtBillete.Text = Convert.ToString(Billete.Substring(0, split));
+                string Billete = string.Format(nfi, "{0:C}", montoIni);
+                txtBillete.Text = Billete;
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void toolStripDropDownButton2_Click(object sender, EventArgs e)
         {
             CashEntity Entity = new CashEntity();
             int ValorArque;
@@ -96,6 +96,11 @@ namespace PresentationLayer
             Entity._MONAPE = Convert.ToDouble(txtTotal.Text);
             CashModel model = new CashModel();
             model.CashOpeninModel(Entity);
+            this.Close();
+        }
+
+        private void toolStripDropDownButton3_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

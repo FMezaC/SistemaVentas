@@ -16,10 +16,10 @@ namespace Domain_Layer
             dao.InsertASI(Insert);
         }
 
-        public string MaxID(MaxID ID)
+        public int MaxID()
         {
             AccountSeatDao dao = new AccountSeatDao();
-            return dao.MaxID(ID);
+            return dao.MaxID();
         }
 
         public List<AccountSeatEntity> ListAccoun(DateTime fech1, DateTime fech2)

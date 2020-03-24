@@ -21,7 +21,7 @@ namespace DataAccess.DataReports
                 SUM(((P.PREUNIT * DT.CANPRO) - V.DESCUE) + V.IGV)INGRESOS
                 FROM VENTA V
                 INNER JOIN DETALLE_VENTA DT ON V.IDVENT = DT.IDVENT
-                INNER JOIN PRODUCTOS P ON DT.CODPRO = P.CODBARR
+                INNER JOIN PRODUCTOS P ON DT.CODPRO = P.CODPROD
                 where v.FECHVE BETWEEN @fromDATE AND @ToDATE
                 group by p.CODPROD, p.DESCPRO, p.PREUNIT
                 ORDER BY CANTIDAD DESC";

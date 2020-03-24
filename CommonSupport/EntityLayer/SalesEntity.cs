@@ -16,5 +16,7 @@ namespace CommonSupport.EntityLayer
         public double _IGV { set; get; }
         public double _DESCUE {set; get;}
         public double _TOTPAG { set; get; }
+        public double _CODPROD { set; get; }
+        public string _DESCPROD { set; get; }
     }
 }

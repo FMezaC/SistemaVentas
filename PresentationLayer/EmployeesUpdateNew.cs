@@ -78,6 +78,14 @@ namespace PresentationLayer
             cboTipUser.DisplayMember = "_TIPOUS";
         }
 
+        public void BranchList()
+        {
+            BranchOfficeModel model = new BranchOfficeModel();
+            comboBox1.DataSource = model.ListBranch();
+            comboBox1.ValueMember = "IDAUSUC";
+            comboBox1.DisplayMember = "DESCSU";
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -141,6 +149,7 @@ namespace PresentationLayer
                     entity._CORREO = txtCorreo.Text;
                     entity._NUMHIJ = Convert.ToInt32(NumeHij.Value);
                     entity._SALARI = Convert.ToDouble(txtSalario.Text);
+                    entity._IDAUSUC = Convert.ToInt32(comboBox1.SelectedValue);
                     EmployeeModel model = new EmployeeModel();
                     model.InsertEmployees(entity);
 
@@ -171,6 +180,7 @@ namespace PresentationLayer
                     entity._CORREO = txtCorreo.Text;
                     entity._NUMHIJ = Convert.ToInt32(NumeHij.Value);
                     entity._SALARI = Convert.ToDouble(txtSalario.Text);
+                    entity._IDAUSUC = Convert.ToInt32(comboBox1.SelectedValue);
                     EmployeeModel model = new EmployeeModel();
                     model.UpdateEmployees(entity);
 

@@ -24,8 +24,7 @@ namespace DataAccess
                 ISNULL (FECHPROD,'') [Fecha Produccion],ISNULL (FECHVEN,'') [Fecha Vencimiento],
                 ISNULL(LI.LINEA,'') LINEA,ISNULL(CL.CLASES,'')CLASE, 
 				PREUNIT, ISNULL (FACTOR,'') Factor, ISNULL (CANTPRO,'') CantDisp, ISNULL(CANTRES,'')CanReser, 
-				FACTOR * CANTPRO AS UNIDADES, IMPUEST
-				from PRODUCTOS PR
+				FACTOR * CANTPRO AS UNIDADES, IMPUEST from PRODUCTOS PR
 				INNER JOIN ESTADO_PRODUCTO ES ON PR.CODEST = ES.CODEST
 				INNER JOIN LINEAS LI ON PR.CODLINE = LI.CODLINE 
 				INNER JOIN PROCED_PRODUC PS ON PR.PROCEDENCIA = PS.CODPROCE
@@ -62,10 +61,11 @@ namespace DataAccess
             }
         }
 
-        public double ProductID(MaxID NewID)
+        public double ProductID()
         {
             using (var conect = GetConnection())
             {
+                double NewID = 0;
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
@@ -74,9 +74,9 @@ namespace DataAccess
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    NewID._ProductID = reader.GetDouble(0);
+                    NewID = reader.GetDouble(0);
                 }
-                return NewID._ProductID;
+                return NewID;
             }
         }
 

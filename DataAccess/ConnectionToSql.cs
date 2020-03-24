@@ -14,7 +14,7 @@ namespace DataAccess
 
         public ConnectionToSql()
         {
-            connectionString = "Server = DESKTOP-RQEDAEF; DataBase = BDHOTELERIA; integrated security =true ";
+            connectionString = "Server = DESKTOP-RQEDAEF\\SA; DataBase = BDHOTELERIA; integrated security =true ";
         }
 
         protected SqlConnection GetConnection()

@@ -49,11 +49,6 @@ namespace PresentationLayer
                     ProvidersModel model4 = new ProvidersModel();
                     dataGridView1.DataSource = model4.ListProviders(textBox4.Text);
                     break;
-                case "Cuentas":
-                    label3.Text = "CUENTA:";
-                    CountModel model5 = new CountModel();
-                    dataGridView1.DataSource = model5.ListCount(textBox4.Text);
-                    break;
             }
         }
 

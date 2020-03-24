@@ -16,10 +16,10 @@ namespace Domain_Layer
             return dao.ListOferts(condition);
         }
 
-        public string NewID(MaxID ID)
+        public int NewID()
         {
             OfertsDao dao = new OfertsDao();
-            return dao.MaxID(ID);
+            return dao.MaxID();
         }
 
         public void InsertNewOfert(OfertsEntity Insert)

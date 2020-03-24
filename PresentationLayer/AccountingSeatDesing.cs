@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain_Layer;
+using FuntionalLayer;
 
 namespace PresentationLayer
 {
@@ -17,26 +18,10 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            AccountSeatNewUpdate Design = new AccountSeatNewUpdate();
-            Design.StartPosition = FormStartPosition.CenterScreen;
-            Design.ListChartCounts("");
-            Design.btnNew.Text = "Registrar";
-            Design.ShowDialog();
-            ListAccoun(dateTimePicker1.Value.AddDays(-1), dateTimePicker2.Value.AddDays(1));
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void AccountingSeatDesing_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = DateTime.Now.AddDays(-1);
-            ListAccoun(dateTimePicker1.Value, DateTime.Now.AddDays(1));
+            ListAccoun(dateTimePicker1.Value, DateTime.Now);
+            statusStrip2.Cursor = Cursors.Hand;
         }
 
         private void ListAccoun(DateTime fech1, DateTime fech2)
@@ -55,7 +40,36 @@ namespace PresentationLayer
             ListAccoun(dateTimePicker1.Value, dateTimePicker2.Value);
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DownloandExcelFuntion function = new DownloandExcelFuntion();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            AccountSeatModel model = new AccountSeatModel();
+            DataTable table = convert.ToDataTable(model.ListAccoun(dateTimePicker1.Value, dateTimePicker2.Value));
+            string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+
+            function.BuildExcel(table, appPath + @"-AsientosContables.xlsx");
+            //Lamar al backgroundWorker
+            FlaatSlanshDesign desing = new FlaatSlanshDesign();
+            desing.showAlert("Descarga Exitosa...", FlaatSlanshDesign.enmType.Success);
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            AccountSeatNewUpdate Design = new AccountSeatNewUpdate();
+            Design.StartPosition = FormStartPosition.CenterScreen;
+            Design.ListChartCounts("");
+            Design.btnNew.Text = "Registrar";
+            Design.ShowDialog();
+            ListAccoun(dateTimePicker1.Value, dateTimePicker2.Value);
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             if (dataGridReportes.SelectedRows.Count > 0)
             {

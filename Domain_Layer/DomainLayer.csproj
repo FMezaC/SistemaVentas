@@ -48,13 +48,15 @@
     <Compile Include="BillingModel.cs" />
     <Compile Include="BillingTypeModel.cs" />
     <Compile Include="BonusModel.cs" />
+    <Compile Include="BranchOfficeModel.cs" />
     <Compile Include="BuckUpModel.cs" />
     <Compile Include="CashModel.cs" />
     <Compile Include="ChartCountModel.cs" />
     <Compile Include="CivilStatusModel.cs" />
     <Compile Include="ClassModel.cs" />
     <Compile Include="CompanyModel.cs" />
-    <Compile Include="CountModel.cs" />
+    <Compile Include="EmployeePaymentsModel.cs" />
+    <Compile Include="OrdersModel.cs" />
     <Compile Include="CustumerModel.cs" />
     <Compile Include="DistricModel.cs" />
     <Compile Include="DocumentTypeModel.cs" />
@@ -82,8 +84,6 @@
     <Compile Include="ProductModel.cs" />
     <Compile Include="ProvidersModel.cs" />
     <Compile Include="ProvinceModel.cs" />
-    <Compile Include="PurcharseDetailsModel.cs" />
-    <Compile Include="PurcharseModel.cs" />
     <Compile Include="SalesCancellationsModel.cs" />
     <Compile Include="SalesDetailModel.cs" />
     <Compile Include="SalesModel.cs" />

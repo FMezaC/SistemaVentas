@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain_Layer;
 using CommonSupport.EntityLayer;
+using FuntionalLayer;
 
 namespace PresentationLayer
 {
@@ -27,6 +28,7 @@ namespace PresentationLayer
         private void ProviderDesign_Load(object sender, EventArgs e)
         {
             ListProviders("");
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListProviders(string conditions)
@@ -41,20 +43,12 @@ namespace PresentationLayer
             dataGridReportes.DataSource = model.ListProviders(txtBuscar.Text);
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            ProviderNewUpdate model = new ProviderNewUpdate();
-            model.ListRub("");
-            model.Pais();
-            ProvidersModel model2 = new ProvidersModel();
-            MaxID entity = new MaxID();
-            model.txtID.Text = Convert.ToString(model2.MaxID(entity));
-            model.btnNew.Text = "Registrar";
-            model.ShowDialog();
-            ListProviders("");
+            this.Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             ProviderNewUpdate design = new ProviderNewUpdate();
             design.txtID.Text = dataGridReportes.CurrentRow.Cells["_IDEMP"].Value.ToString();
@@ -77,6 +71,32 @@ namespace PresentationLayer
             design.btnNew.Text = "Grabar";
             design.ShowDialog();
             ListProviders("");
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            ProviderNewUpdate model = new ProviderNewUpdate();
+            model.ListRub("");
+            model.Pais();
+            ProvidersModel model2 = new ProvidersModel();
+            model.txtID.Text = Convert.ToString(model2.MaxID());
+            model.btnNew.Text = "Registrar";
+            model.ShowDialog();
+            ListProviders("");
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DownloandExcelFuntion function = new DownloandExcelFuntion();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            ProvidersModel model = new ProvidersModel();
+            DataTable table = convert.ToDataTable(model.ListProviders(txtBuscar.Text));
+            string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+
+            function.BuildExcel(table, appPath + @"-Proveedores.xlsx");
+            //Lamar al backgroundWorker
+            FlaatSlanshDesign desing = new FlaatSlanshDesign();
+            desing.showAlert("Descarga Exitosa...", FlaatSlanshDesign.enmType.Success);
         }
     }
 }

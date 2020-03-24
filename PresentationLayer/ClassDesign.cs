@@ -70,9 +70,7 @@ namespace PresentationLayer
         private void btnNew_Click(object sender, EventArgs e)
         {
             ClassModel model = new ClassModel();
-            MaxID ID = new MaxID();
-            model.NuevoCod(ID);
-            textBox1.Text = ID._ClassID;
+            textBox1.Text = Convert.ToString(model.NuevoCod());
             btnGrabar.Text = "Registrar";
             ListLinea("");
             panel1.Visible = true;

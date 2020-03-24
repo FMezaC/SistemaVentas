@@ -30,14 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductDesign));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.togglePanel = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btnSalir = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnGuardar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnKardex = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnListar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnEliminar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnModificar = new System.Windows.Forms.ToolStripStatusLabel();
             this.label27 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -60,8 +59,7 @@
             this._UNIDADES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IMPUEST = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            this.togglePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReportes)).BeginInit();
             this.SuspendLayout();
@@ -70,109 +68,148 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.togglePanel);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.btnNew);
-            this.groupBox1.Controls.Add(this.btnCerrar);
-            this.groupBox1.Controls.Add(this.pictureBox4);
+            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1067, 81);
+            this.groupBox1.Size = new System.Drawing.Size(1104, 81);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // togglePanel
+            // statusStrip1
             // 
-            this.togglePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.togglePanel.BackColor = System.Drawing.Color.DarkGray;
-            this.togglePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.togglePanel.Controls.Add(this.panel6);
-            this.togglePanel.Controls.Add(this.panel2);
-            this.togglePanel.Controls.Add(this.panel1);
-            this.togglePanel.Location = new System.Drawing.Point(624, 27);
-            this.togglePanel.Name = "togglePanel";
-            this.togglePanel.Size = new System.Drawing.Size(39, 39);
-            this.togglePanel.TabIndex = 50;
+            this.statusStrip1.AllowItemReorder = true;
+            this.statusStrip1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSalir,
+            this.btnGuardar,
+            this.btnKardex,
+            this.btnListar,
+            this.btnEliminar,
+            this.btnModificar});
+            this.statusStrip1.Location = new System.Drawing.Point(486, 18);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusStrip1.Size = new System.Drawing.Size(607, 56);
+            this.statusStrip1.TabIndex = 54;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // panel6
+            // btnSalir
             // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(5, 16);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(25, 3);
-            this.panel6.TabIndex = 52;
+            this.btnSalir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSalir.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnSalir.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(93, 51);
+            this.btnSalir.Spring = true;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // panel2
+            // btnGuardar
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(5, 26);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(25, 3);
-            this.panel2.TabIndex = 52;
+            this.btnGuardar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnGuardar.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnGuardar.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(93, 51);
+            this.btnGuardar.Spring = true;
+            this.btnGuardar.Text = "Exportar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // panel1
+            // btnKardex
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(5, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(25, 3);
-            this.panel1.TabIndex = 51;
+            this.btnKardex.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnKardex.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnKardex.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnKardex.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnKardex.Image = ((System.Drawing.Image)(resources.GetObject("btnKardex.Image")));
+            this.btnKardex.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnKardex.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnKardex.Name = "btnKardex";
+            this.btnKardex.Size = new System.Drawing.Size(93, 51);
+            this.btnKardex.Spring = true;
+            this.btnKardex.Text = "Kardex";
+            this.btnKardex.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnKardex.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // btnUpdate
+            // btnListar
             // 
-            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUpdate.Location = new System.Drawing.Point(680, 27);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(91, 39);
-            this.btnUpdate.TabIndex = 49;
-            this.btnUpdate.Text = "Actualizar";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnListar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnListar.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnListar.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnListar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnListar.Image = ((System.Drawing.Image)(resources.GetObject("btnListar.Image")));
+            this.btnListar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnListar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(93, 51);
+            this.btnListar.Spring = true;
+            this.btnListar.Text = "Nuevo";
+            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnListar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
-            // btnNew
+            // btnEliminar
             // 
-            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnNew.BackColor = System.Drawing.Color.Green;
-            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNew.Location = new System.Drawing.Point(787, 27);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(91, 39);
-            this.btnNew.TabIndex = 48;
-            this.btnNew.Text = "Nuevo";
-            this.btnNew.UseVisualStyleBackColor = false;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnEliminar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnEliminar.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnEliminar.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(93, 51);
+            this.btnEliminar.Spring = true;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // btnCerrar
+            // btnModificar
             // 
-            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCerrar.BackColor = System.Drawing.Color.Brown;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCerrar.Location = new System.Drawing.Point(894, 27);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(91, 39);
-            this.btnCerrar.TabIndex = 4;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1001, 27);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(51, 39);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.btnModificar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnModificar.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnModificar.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(93, 51);
+            this.btnModificar.Spring = true;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // label27
             // 
@@ -203,7 +240,7 @@
             this.groupBox6.Controls.Add(this.dataGridReportes);
             this.groupBox6.Location = new System.Drawing.Point(12, 117);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1067, 409);
+            this.groupBox6.Size = new System.Drawing.Size(1104, 409);
             this.groupBox6.TabIndex = 47;
             this.groupBox6.TabStop = false;
             // 
@@ -236,7 +273,7 @@
             this.dataGridReportes.Location = new System.Drawing.Point(26, 32);
             this.dataGridReportes.Name = "dataGridReportes";
             this.dataGridReportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridReportes.Size = new System.Drawing.Size(1025, 358);
+            this.dataGridReportes.Size = new System.Drawing.Size(1062, 358);
             this.dataGridReportes.TabIndex = 1;
             this.dataGridReportes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridReportes_CellFormatting);
             this.dataGridReportes.Sorted += new System.EventHandler(this.dataGridReportes_Sorted);
@@ -348,7 +385,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(1091, 538);
+            this.ClientSize = new System.Drawing.Size(1128, 538);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Name = "ProductDesign";
@@ -356,8 +393,8 @@
             this.Load += new System.EventHandler(this.ProductDesign_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.togglePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReportes)).EndInit();
             this.ResumeLayout(false);
@@ -367,18 +404,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dataGridReportes;
-        private System.Windows.Forms.Panel togglePanel;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _CODPROD;
         private System.Windows.Forms.DataGridViewTextBoxColumn _DESCPRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn _PROCEDENCIA;
@@ -396,5 +425,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _CANTPRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn _UNIDADES;
         private System.Windows.Forms.DataGridViewTextBoxColumn IMPUEST;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel btnSalir;
+        private System.Windows.Forms.ToolStripStatusLabel btnGuardar;
+        private System.Windows.Forms.ToolStripStatusLabel btnKardex;
+        private System.Windows.Forms.ToolStripStatusLabel btnListar;
+        private System.Windows.Forms.ToolStripStatusLabel btnEliminar;
+        private System.Windows.Forms.ToolStripStatusLabel btnModificar;
     }
 }

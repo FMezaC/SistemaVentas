@@ -11,10 +11,11 @@ namespace DataAccess
 {
     public class SalesDao : ConnectionToSql
     {
-        public int MaxID(MaxID ID)
+        public int MaxID()
         {
             using (var conect = GetConnection())
             {
+                int ID = 0;
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
@@ -23,9 +24,9 @@ namespace DataAccess
                 SqlDataReader leer = cmd.ExecuteReader();
                 while (leer.Read())
                 {
-                    ID._MaxIDSals = leer.GetInt32(0);
+                    ID = leer.GetInt32(0);
                 }
-                return ID._MaxIDSals;
+                return ID;
             }
         }
 
@@ -64,6 +65,29 @@ namespace DataAccess
                 cmd.Parameters.AddWithValue("@ID", Update._IDVENT);
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<SalesEntity> AutoComplete()
+        {
+            using (var connect = GetConnection())
+            {
+                connect.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connect;
+                cmd.CommandText = "select codprod, (descpro+'X'+umstock)Producto from productos";
+                cmd.CommandType = CommandType.Text;
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<SalesEntity> NewList = new List<SalesEntity>();
+                while (reader.Read())
+                {
+                    NewList.Add(new SalesEntity()
+                    {
+                        _CODPROD = reader.GetDouble(0),
+                        _DESCPROD = reader.GetString(1),
+                    });
+                }
+                return NewList;
             }
         }
     }

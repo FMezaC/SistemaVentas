@@ -74,7 +74,9 @@
                     <Style />
                   </ChartDataLabel>
                   <Style>
-                    <Color>DarkOrange</Color>
+                    <Color>DodgerBlue</Color>
+                    <BackgroundGradientType>None</BackgroundGradientType>
+                    <BackgroundHatchType>BackwardDiagonal</BackgroundHatchType>
                   </Style>
                   <ChartMarker>
                     <Style />
@@ -278,7 +280,7 @@
         <Top>1.19176cm</Top>
         <Left>1.5cm</Left>
         <Height>6.24354cm</Height>
-        <Width>18cm</Width>
+        <Width>19.03188cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -289,136 +291,17 @@
           <BackgroundGradientType>None</BackgroundGradientType>
         </Style>
       </Chart>
-      <Tablix Name="Tablix3">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>7cm</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox20">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Total de Ventas</Value>
-                              <Style>
-                                <FontSize>11pt</FontSize>
-                                <Color>Teal</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox20</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TotalNetSales">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!TotalNetSales.Value</Value>
-                              <Style>
-                                <FontSize>11pt</FontSize>
-                                <Format>#,0.00'$';(#,0.00'$')</Format>
-                                <Color>Gray</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>TotalNetSales</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>es-ES</rd:FormatSymbolCulture>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="Detalles" />
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <DataSetName>SalesReports</DataSetName>
-        <Top>7.92953cm</Top>
-        <Left>12.5cm</Left>
-        <Height>1.2cm</Height>
-        <Width>7cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
       <Tablix Name="Tablix4">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.21778cm</Width>
+              <Width>1.74153cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.75236cm</Width>
+              <Width>3.27611cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.96403cm</Width>
+              <Width>3.48778cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -614,7 +497,8 @@
                             <TextRun>
                               <Value>=Fields!NetSales.Value</Value>
                               <Style>
-                                <Format>#,0.00'$';(#,0.00'$')</Format>
+                                <Format>'S/' #,0.00;'S/' -#,0.00</Format>
+                                <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -631,7 +515,6 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>es-ES</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -661,8 +544,8 @@
         <Top>7.92953cm</Top>
         <Left>1.5cm</Left>
         <Height>1.2cm</Height>
-        <Width>9.93417cm</Width>
-        <ZIndex>3</ZIndex>
+        <Width>8.50542cm</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -690,11 +573,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox34</rd:DefaultName>
-        <Top>9.49058cm</Top>
-        <Left>8.30474cm</Left>
+        <Top>9.66669cm</Top>
+        <Left>8.73406cm</Left>
         <Height>0.83812cm</Height>
         <Width>4.7225cm</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -709,25 +592,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.86578cm</Width>
+              <Width>3.01319cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.47276cm</Width>
+              <Width>4.62017cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.01162cm</Width>
+              <Width>3.15903cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.94438cm</Width>
+              <Width>2.09179cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.82963cm</Width>
+              <Width>1.97704cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.81208cm</Width>
+              <Width>1.95949cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.06375cm</Width>
+              <Width>2.21116cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1102,7 +985,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Impuet.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>#,0.00</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1192,7 +1077,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TotVent.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>#,0.00</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1241,8 +1128,8 @@
         <Top>10.6812cm</Top>
         <Left>1.5cm</Left>
         <Height>1.2cm</Height>
-        <Width>18cm</Width>
-        <ZIndex>5</ZIndex>
+        <Width>19.03188cm</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1273,8 +1160,8 @@
         <Top>12.32719cm</Top>
         <Left>1.5cm</Left>
         <Height>0.67937cm</Height>
-        <Width>3.53188cm</Width>
-        <ZIndex>6</ZIndex>
+        <Width>5.01764cm</Width>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1296,8 +1183,9 @@
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
-                  <Format>#,0.00'$';(#,0.00'$')</Format>
+                  <Format>'S/' #,0.00;'S/' -#,0.00</Format>
                   <Color>Teal</Color>
+                  <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1308,10 +1196,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox34</rd:DefaultName>
         <Top>12.32719cm</Top>
-        <Left>8.73406cm</Left>
+        <Left>9.76594cm</Left>
         <Height>0.67937cm</Height>
         <Width>10.76594cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1323,11 +1211,280 @@
           <rd:FormatSymbolCulture>es-ES</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
+      <Tablix Name="Tablix8">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.15744cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.02271cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.52943cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox53">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Ventas Netas</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox53</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>DimGray</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox47">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Impuesto</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox47</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>DimGray</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox49">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total de Ventas</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox49</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>DimGray</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox54">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!TotalNetSales.Value, "ResumenTotales")-Sum(Fields!TotalImpust.Value, "ResumenTotales")</Value>
+                              <Style>
+                                <Format>'S/' #,0.00;'S/' -#,0.00</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox54</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalImpust">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TotalImpust.Value</Value>
+                              <Style>
+                                <Format>'S/' #,0.00;'S/' -#,0.00</Format>
+                                <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalImpust</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalNetSales">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TotalNetSales.Value</Value>
+                              <Style>
+                                <Format>'S/' #,0.00;'S/' -#,0.00</Format>
+                                <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalNetSales</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>es-PE</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Detalles3" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>ResumenTotales</DataSetName>
+        <Top>7.92953cm</Top>
+        <Left>10.8223cm</Left>
+        <Height>1.2cm</Height>
+        <Width>9.70958cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
     </ReportItems>
     <Height>14cm</Height>
     <Style />
   </Body>
-  <Width>21cm</Width>
+  <Width>22.63099cm</Width>
   <Page>
     <PageHeader>
       <Height>4cm</Height>
@@ -1369,9 +1526,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.3175cm</Top>
-          <Left>12.29042cm</Left>
+          <Left>12.94786cm</Left>
           <Height>0.6cm</Height>
-          <Width>7.20958cm</Width>
+          <Width>7.58402cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1403,7 +1560,7 @@
           <Top>3.22361cm</Top>
           <Left>1.5cm</Left>
           <Height>0.6cm</Height>
-          <Width>18cm</Width>
+          <Width>19.03188cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1668,6 +1825,39 @@
         <rd:DataSetName>Domain_Layer.DomainReports</rd:DataSetName>
         <rd:TableName>SalesListening</rd:TableName>
         <rd:ObjectDataSourceType>Domain_Layer.DomainReports.SalesListening, Domain_Layer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="ResumenTotales">
+      <Query>
+        <DataSourceName>Domain_LayerDomainReports1</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ReportDate">
+          <DataField>ReportDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TotalImpust">
+          <DataField>TotalImpust</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="TotalNetSales">
+          <DataField>TotalNetSales</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Domain_Layer.DomainReports</rd:DataSetName>
+        <rd:TableName>OrderDomainReports</rd:TableName>
+        <rd:ObjectDataSourceType>Domain_Layer.DomainReports.OrderDomainReports, Domain_Layer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

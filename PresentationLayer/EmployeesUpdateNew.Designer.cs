@@ -43,9 +43,11 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtApePater = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtNumCel = new System.Windows.Forms.MaskedTextBox();
             this.NumeHij = new System.Windows.Forms.NumericUpDown();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtNumDoc = new System.Windows.Forms.TextBox();
             this.txtNomb = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -75,8 +77,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.cboTipUser = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNumCel = new System.Windows.Forms.MaskedTextBox();
-            this.txtNumDoc = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumeHij)).BeginInit();
@@ -185,6 +187,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.txtNumCel);
             this.groupBox2.Controls.Add(this.NumeHij);
             this.groupBox2.Controls.Add(this.txtCorreo);
@@ -218,6 +222,16 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
+            // txtNumCel
+            // 
+            this.txtNumCel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumCel.Location = new System.Drawing.Point(189, 158);
+            this.txtNumCel.Mask = "000-000-000";
+            this.txtNumCel.Name = "txtNumCel";
+            this.txtNumCel.Size = new System.Drawing.Size(163, 21);
+            this.txtNumCel.TabIndex = 54;
+            this.txtNumCel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // NumeHij
             // 
             this.NumeHij.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,6 +257,14 @@
             this.pictureBox1.Size = new System.Drawing.Size(65, 57);
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
+            // 
+            // txtNumDoc
+            // 
+            this.txtNumDoc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNumDoc.Location = new System.Drawing.Point(189, 104);
+            this.txtNumDoc.Name = "txtNumDoc";
+            this.txtNumDoc.Size = new System.Drawing.Size(163, 20);
+            this.txtNumDoc.TabIndex = 38;
             // 
             // txtNomb
             // 
@@ -551,23 +573,24 @@
             this.label7.TabIndex = 46;
             this.label7.Text = "Tipo Usuario";
             // 
-            // txtNumCel
+            // comboBox1
             // 
-            this.txtNumCel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumCel.Location = new System.Drawing.Point(189, 158);
-            this.txtNumCel.Mask = "000-000-000";
-            this.txtNumCel.Name = "txtNumCel";
-            this.txtNumCel.Size = new System.Drawing.Size(163, 21);
-            this.txtNumCel.TabIndex = 54;
-            this.txtNumCel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(394, 210);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 21);
+            this.comboBox1.TabIndex = 56;
             // 
-            // txtNumDoc
+            // label20
             // 
-            this.txtNumDoc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumDoc.Location = new System.Drawing.Point(189, 104);
-            this.txtNumDoc.Name = "txtNumDoc";
-            this.txtNumDoc.Size = new System.Drawing.Size(163, 20);
-            this.txtNumDoc.TabIndex = 38;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(391, 190);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(63, 17);
+            this.label20.TabIndex = 55;
+            this.label20.Text = "Sucursal";
             // 
             // EmployeesUpdateNew
             // 
@@ -644,5 +667,7 @@
         public System.Windows.Forms.MaskedTextBox txtNumCel;
         public System.Windows.Forms.TextBox txtNumDoc;
         public System.Windows.Forms.Button btnNew;
+        public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label20;
     }
 }

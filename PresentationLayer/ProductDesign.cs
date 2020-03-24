@@ -18,14 +18,11 @@ namespace PresentationLayer
         public ProductDesign()
         {
             InitializeComponent();
-            panel1.Click += new EventHandler(ToggleFuntion);
-            togglePanel.Click += new EventHandler(ToggleFuntion);
-            panel2.Click += new EventHandler(ToggleFuntion);
-            panel6.Click += new EventHandler(ToggleFuntion);
         }
         private void ProductDesign_Load(object sender, EventArgs e)
         {
             ListProducts("");
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListProducts(string condition)
@@ -38,19 +35,47 @@ namespace PresentationLayer
         {
             ListProducts(txtBuscar.Text);
         }
+        
+        private void dataGridReportes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridReportes.Columns[e.ColumnIndex].Name == "_UNIDADES")
+            {
+                if (Convert.ToInt32(e.Value) <= 5)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font(dataGridReportes.Font, FontStyle.Bold);
+                }
+            }
+        }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void dataGridReportes_Sorted(object sender, EventArgs e)
+        {
+            foreach (DataGridViewColumn column in dataGridReportes.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
+        }
+        
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
-        private void ToggleFuntion(object sender, EventArgs e)
+
+        private void btnListar_Click(object sender, EventArgs e)
         {
-            string IDP = dataGridReportes.CurrentRow.Cells["_CODPROD"].Value.ToString();
-            string IDP2 = string.Copy(IDP);
+            ProductUpdateNew MyNew = new ProductUpdateNew();
+            MyNew.StartPosition = FormStartPosition.CenterScreen;
+            ProductModel model = new ProductModel();
+            MyNew.txtID.Text = Convert.ToString(model.PreoductID());
+            MyNew.Combobox();
+            MyNew.ListLine();
+            MyNew.ListClass();
+            MyNew.btnNew.Text = "Registrar";
+            MyNew.ShowDialog();
+            ListProducts("");
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             ProductUpdateNew update = new ProductUpdateNew();
             update.StartPosition = FormStartPosition.CenterScreen;
@@ -78,46 +103,19 @@ namespace PresentationLayer
             update.ShowDialog();
             ListProducts("");
         }
-        
-        private void btnNew_Click(object sender, EventArgs e)
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ProductUpdateNew MyNew = new ProductUpdateNew();
-            MyNew.StartPosition = FormStartPosition.CenterScreen;
+            DownloandExcelFuntion function = new DownloandExcelFuntion();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
             ProductModel model = new ProductModel();
-            MaxID NewID = new MaxID();
-            MyNew.txtID.Text = Convert.ToString(model.PreoductID(NewID));
-            MyNew.Combobox();
-            MyNew.ListLine();
-            MyNew.ListClass();
-            MyNew.btnNew.Text = "Registrar";
-            MyNew.ShowDialog();
-            ListProducts("");
-        }
+            DataTable table = convert.ToDataTable(model.ListProducts(txtBuscar.Text));
+            string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
-        private void dataGridReportes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dataGridReportes.Columns[e.ColumnIndex].Name == "_UNIDADES")
-            {
-                if (Convert.ToInt32(e.Value) <= 5)
-                {
-                    e.CellStyle.ForeColor = Color.Red;
-                    e.CellStyle.Font = new Font(dataGridReportes.Font, FontStyle.Bold);
-                }
-            }
-        }
-
-        private void dataGridReportes_Sorted(object sender, EventArgs e)
-        {
-            foreach (DataGridViewColumn column in dataGridReportes.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.Automatic;
-            }
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            PrintDocumentFuntion documen = new PrintDocumentFuntion();
-            documen.PrintngDocuemts(dataGridReportes);
+            function.BuildExcel(table, appPath + @"-Productos.xlsx");
+            //Lamar al backgroundWorker
+            FlaatSlanshDesign desing = new FlaatSlanshDesign();
+            desing.showAlert("Descarga Exitosa...", FlaatSlanshDesign.enmType.Success);
         }
     }
 }

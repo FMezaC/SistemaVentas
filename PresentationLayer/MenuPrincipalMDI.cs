@@ -22,7 +22,6 @@ namespace PresentationLayer
         private void MenuPrincipalMDI_Load(object sender, EventArgs e)
         {
             pantallaCompleta();
-            GetIPAddress();
             CargarDatosUser();
             MenuHeader(0,null, menuStrip1);
             DasboardView();
@@ -34,6 +33,7 @@ namespace PresentationLayer
             lblName.Text = UserLoginCache.nombre;
             lblLastName.Text = UserLoginCache.apellidos;
             lblUser.Text = UserLoginCache.tipo;
+            toolStripSu.Text = UserLoginCache.Sucursal;
             miFecha.Text = DateTime.Now.ToShortDateString();
             CompanyModel model = new CompanyModel();
             List<CompanyEntity> MyList = new List<CompanyEntity>();
@@ -49,12 +49,6 @@ namespace PresentationLayer
         /* “Querido mantenedor: Cuando hayas terminado de intentar “optimizar” esta rutina y te hayas dado 
         cuenta de que hacerlo era un gran error, por favor, incrementa el siguiente contador como aviso al 
         siguiente mantenedor que le toque: total_horas_desperdiciadas = 16” */
-        protected void GetIPAddress()
-        {
-            IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
-            String IP = Convert.ToString(localIPs[1]);
-            toolStripIP.Text = IP;
-        }
         
         int lx, ly;
         int sw, sh;
@@ -254,12 +248,7 @@ namespace PresentationLayer
                 backUp.StartPosition = FormStartPosition.CenterScreen;
                 backUp.ShowDialog();
             }
-            if (Convert.ToInt32(ItemClick.Name) == 48)
-            {
-                EmployeesDesign employee = new EmployeesDesign();
-                FormHijo(employee, this);
-            }
-
+            
             if (Convert.ToInt32(ItemClick.Name) == 68)
             {
                 CompanyDesign company = new CompanyDesign();
@@ -280,17 +269,17 @@ namespace PresentationLayer
                 AreaDesign Area = new AreaDesign();
                 FormHijo(Area, this);
             }
-            if (Convert.ToInt32(ItemClick.Name) == 56)
-            {
-                CreditNoteDeign credit = new CreditNoteDeign();
-                FormHijo(credit, this);
-            }
-            if (Convert.ToInt32(ItemClick.Name) == 57)
-            {
-                DebitNoteDesign debit = new DebitNoteDesign();
-                FormHijo(debit, this);
-            }
-            if (Convert.ToInt32(ItemClick.Name) == 66)
+            //if (Convert.ToInt32(ItemClick.Name) == 57)
+            //{
+            //    CreditNoteDeign credit = new CreditNoteDeign();
+            //    FormHijo(credit, this);
+            //}
+            //if (Convert.ToInt32(ItemClick.Name) == 56)
+            //{
+            //    DebitNoteDesign debit = new DebitNoteDesign();
+            //    FormHijo(debit, this);
+            //}
+            if (Convert.ToInt32(ItemClick.Name) == 77)
             {
                 MesuareDesign mesuare = new MesuareDesign();
                 FormHijo(mesuare, this);
@@ -307,13 +296,7 @@ namespace PresentationLayer
                 BonusDesign Bonusdesign = new BonusDesign();
                 FormHijo(Bonusdesign, this);
             }
-
-            if (Convert.ToInt32(ItemClick.Name) == 49)
-            {
-                ScheduleDesign Schedule = new ScheduleDesign();
-                FormHijo(Schedule, this);
-            }
-
+            
             // Creacion modulo de ventas
             if (Convert.ToInt32(ItemClick.Name) == 54)
             {
@@ -325,16 +308,16 @@ namespace PresentationLayer
                 else
                     MessageBox.Show("!Usted no Dispone de Apertura de Caja¡", "CASH CLOSING");
             }
-            if (Convert.ToInt32(ItemClick.Name) == 55)
-            {
-                if (ValidaCaja())
-                {
-                    BillingDesign billing = new BillingDesign();
-                    FormHijo(billing, this);
-                }
-                else
-                    MessageBox.Show("!Usted no Dispone de Apertura de Caja¡", "CASH CLOSING");
-            }
+            //if (Convert.ToInt32(ItemClick.Name) == 55)
+            //{
+            //    if (ValidaCaja())
+            //    {
+            //        BillingDesign billing = new BillingDesign();
+            //        FormHijo(billing, this);
+            //    }
+            //    else
+            //        MessageBox.Show("!Usted no Dispone de Apertura de Caja¡", "CASH CLOSING");
+            //}
 
             // Caja
             if (Convert.ToInt32(ItemClick.Name) == 75)
@@ -366,7 +349,7 @@ namespace PresentationLayer
                 InventoryDesign Invent = new InventoryDesign();
                 FormHijo(Invent, this);
             }
-            if (Convert.ToInt32(ItemClick.Name) == 60)
+            if (Convert.ToInt32(ItemClick.Name) == 59)
             {
                 PurchasingDesing charsing = new PurchasingDesing();
                 FormHijo(charsing, this);
@@ -385,10 +368,17 @@ namespace PresentationLayer
                 FormHijo(report, this);
             }
 
-            if (Convert.ToInt32(ItemClick.Name) == 77)
+            // Recursos Humanos
+            if (Convert.ToInt32(ItemClick.Name) == 45)
             {
-                CustumerReport report = new CustumerReport();
+                EmployeePaymentsDesign report = new EmployeePaymentsDesign();
                 FormHijo(report, this);
+            }
+
+            if (Convert.ToInt32(ItemClick.Name) == 47)
+            {
+                EmployeesDesign employee = new EmployeesDesign();
+                FormHijo(employee, this);
             }
         }
 

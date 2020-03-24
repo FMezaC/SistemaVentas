@@ -10,10 +10,10 @@ namespace Domain_Layer
 {
     public class SalesModel
     {
-        public int MaxID(MaxID ID)
+        public int MaxID()
         {
             SalesDao dao = new SalesDao();
-            return dao.MaxID(ID);
+            return dao.MaxID();
         }
         public void RegisterSales(SalesEntity Insert)
         {
@@ -25,6 +25,11 @@ namespace Domain_Layer
         {
             SalesDao dao = new SalesDao();
             dao.UpdateSalesState(Update);
+        }
+        public List<SalesEntity> AutocompletText()
+        {
+            SalesDao dao = new SalesDao();
+            return dao.AutoComplete();
         }
     }
 }

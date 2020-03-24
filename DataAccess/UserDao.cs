@@ -17,33 +17,33 @@ namespace DataAccess
             using (var conect = GetConnection())
             {
                 conect.Open();
-                using (var command = new SqlCommand())
+                SqlCommand command = new SqlCommand();
+                command.Connection = conect;
+                command.CommandText = @"select us.USUARI, UT.TIPOUS, emp.NOMEMP,  emp.APEPAT+' '+emp.APEMAT as Apellidos,
+				 emp.NUMDOC, SU.DESCSU from usuarios Us inner join EMPLEADOS emp 
+				 on us.NUMDNI = emp.NUMDOC INNER JOIN TIP_USUARIO UT ON Us.IDTIPO = UT.ID
+				INNER JOIN SUCURSAL SU ON SU.IDAUSUC = emp.IDAUSUC
+                where USUARI = @user and UPASSW = @passw and Us.ESTADO = 'Activo'";
+                command.Parameters.AddWithValue("@user", user);
+                command.Parameters.AddWithValue("@passw", passw);
+                command.CommandType = CommandType.Text;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    command.Connection = conect;
-                    command.CommandText = @"select us.USUARI, UT.TIPOUS, emp.NOMEMP,  emp.APEPAT+' '+emp.APEMAT as Apellidos, emp.NUMDOC
-                    from usuarios Us inner join EMPLEADOS emp on us.NUMDNI = emp.NUMDOC
-					INNER JOIN TIP_USUARIO UT ON Us.IDTIPO = UT.ID
-                    where USUARI = @user and UPASSW = @passw and Us.ESTADO = 'Activo'";
-                    command.Parameters.AddWithValue("@user", user);
-                    command.Parameters.AddWithValue("@passw", passw);
-                    command.CommandType = CommandType.Text;
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            UserLoginCache.user = reader.GetString(0);
-                            UserLoginCache.tipo = reader.GetString(1);
-                            UserLoginCache.nombre = reader.GetString(2);
-                            UserLoginCache.apellidos = reader.GetString(3);
-                            UserLoginCache.NumDocum = reader.GetString(4);
-                        }
-                        return true;
+                        UserLoginCache.user = reader.GetString(0);
+                        UserLoginCache.tipo = reader.GetString(1);
+                        UserLoginCache.nombre = reader.GetString(2);
+                        UserLoginCache.apellidos = reader.GetString(3);
+                        UserLoginCache.NumDocum = reader.GetString(4);
+                        UserLoginCache.Sucursal = reader.GetString(5);
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         }

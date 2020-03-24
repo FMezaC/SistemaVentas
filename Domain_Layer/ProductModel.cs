@@ -16,10 +16,10 @@ namespace Domain_Layer
             return dao.ProductList(condition);
         }
 
-        public double PreoductID(MaxID NewID)
+        public double PreoductID()
         {
             ProducDao dao = new ProducDao();
-            return dao.ProductID(NewID);
+            return dao.ProductID();
         }
 
         public void InsertProduct(ProductEntity Insert)

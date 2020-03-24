@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CommonSupport.EntityLayer;
 using Domain_Layer;
 using CommonSupport;
+using FuntionalLayer;
 
 namespace PresentationLayer
 {
@@ -22,7 +23,32 @@ namespace PresentationLayer
         
         private void SalesDesign_Load(object sender, EventArgs e)
         {
-            
+            comboBox1.AutoCompleteCustomSource = Autocompete();
+            comboBox1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+        
+        private AutoCompleteStringCollection Autocompete()
+        {
+            SalesModel model = new SalesModel();
+            comboBox1.DataSource = model.AutocompletText();
+            comboBox1.DisplayMember = "_DESCPROD";
+            comboBox1.ValueMember = "_CODPROD";
+            List<SalesEntity> NewList = new List<SalesEntity>();
+            NewList = model.AutocompletText();
+            AutoCompleteStringCollection collections = new AutoCompleteStringCollection();
+            foreach (var item in NewList)
+            {
+                collections.Add(item._DESCPROD);
+            }
+            return collections;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue.ToString().Any(x => char.IsNumber(x)))
+                textBox1.Text = comboBox1.SelectedValue.ToString();
+            textBox1.Focus();
         }
 
         decimal Impuest = 0;
@@ -38,14 +64,14 @@ namespace PresentationLayer
             string codbarr = "";
             for (int i = 0; i < MyList.Count; i++)
             {
-                codbarr = MyList[i]._CODBARR;
+                codbarr = Convert.ToString(MyList[i]._CODPROD);
             }
 
             if (dataGridViewSales.RowCount == 0)
             {
                 for (int i = 0; i < MyList.Count; i++)
                 {
-                    dataGridViewSales.Rows.Add(MyList[i]._CODBARR, MyList[i]._DESCPRO, MyList[i]._PREUNIT,
+                    dataGridViewSales.Rows.Add(MyList[i]._CODPROD, MyList[i]._DESCPRO, MyList[i]._PREUNIT,
                     cant, Convert.ToDouble(MyList[i]._PREUNIT * cant));
                     Impuest = Impuest +((MyList[i]._PREUNIT * 1) * MyList[i]._IMPUEST / 100);
                 }
@@ -65,7 +91,7 @@ namespace PresentationLayer
                 {
                     for (int i = 0; i < MyList.Count; i++)
                     {
-                        dataGridViewSales.Rows.Add(MyList[i]._CODBARR, MyList[i]._DESCPRO, MyList[i]._PREUNIT,
+                        dataGridViewSales.Rows.Add(MyList[i]._CODPROD, MyList[i]._DESCPRO, MyList[i]._PREUNIT,
                         cant, Convert.ToDouble(MyList[i]._PREUNIT * cant));
                         Impuest = Impuest + ((MyList[i]._PREUNIT * cant) * MyList[i]._IMPUEST / 100);
                     }
@@ -132,7 +158,7 @@ namespace PresentationLayer
                             Dispon = MyList[i]._CANTPRO - Convert.ToInt32(MyList[i]._CANTRES);
                             foreach (DataGridViewRow rows in dataGridViewSales.Rows)
                             {
-                                if (MyList[i]._CODBARR == rows.Cells["CodProd"].Value.ToString())
+                                if (MyList[i]._CODPROD == Convert.ToDouble(rows.Cells["CodProd"].Value))
                                     Dispon = Dispon - Convert.ToInt32(rows.Cells["cantPed"].Value);
                             }
                         }
@@ -150,7 +176,7 @@ namespace PresentationLayer
 
                                     foreach (DataGridViewRow rows in dataGridViewSales.Rows)
                                     {
-                                        if (MyList2[j]._CODBARR == rows.Cells["CodProd"].Value.ToString())
+                                        if (MyList2[j]._CODPROD == Convert.ToDouble(rows.Cells["CodProd"].Value))
                                             cantOfert = cantOfert - Convert.ToInt32(rows.Cells["cantPed"].Value);
                                     }
                                     if (cantOfert > 0)
@@ -163,6 +189,7 @@ namespace PresentationLayer
                             AddCarrito(Convert.ToDouble(textBox1.Text));
                             label3.Text = "";
                             textBox1.Clear();
+                            comboBox1.Focus();
                         }
                         else
                             label3.Text = "¡PRODUCTO SIN STOCK!";
@@ -182,6 +209,9 @@ namespace PresentationLayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             if (dataGridViewSales.Rows.Count > 0)
             {
                 double suma = 0;
@@ -189,9 +219,8 @@ namespace PresentationLayer
                 foreach (DataGridViewRow row in dataGridViewSales.Rows)
                 {
                     suma = suma + Convert.ToDouble(row.Cells["SubTotal"].Value);
-                    string subTot = Convert.ToString(suma.ToString("C2", CultureInfo.CurrentCulture));
-                    int fn = subTot.Length - 2;
-                    txtSubTot.Text = Convert.ToString(subTot.Substring(0, fn));
+                    string subTot = string.Format(nfi, "{0:C}", suma);
+                    txtSubTot.Text = subTot;
 
                 }
                 if (txtIGV.Text == string.Empty)
@@ -203,17 +232,14 @@ namespace PresentationLayer
                 
                 pagar = Convert.ToDecimal(txtSubTot.Text) + Convert.ToDecimal(txtIGV.Text) - Descuento;
                 
-                string Total = Convert.ToString(pagar.ToString("C2", CultureInfo.CurrentCulture));
-                int hasta = Total.Length - 2;
-                txtTotPag.Text = Convert.ToString(Total.Substring(0, hasta));
+                string Total = string.Format(nfi, "{0:C}", pagar);
+                txtTotPag.Text = Total;
 
-                string impst = Convert.ToString(Impuest.ToString("C2", CultureInfo.CurrentCulture));
-                int hst2 = impst.Length - 2;
-                txtIGV.Text = Convert.ToString(impst.Substring(0, hst2));
+                string impst = string.Format(nfi, "{0:C}", Impuest);
+                txtIGV.Text = impst;
 
-                string descu = Convert.ToString(Descuento.ToString("C2", CultureInfo.CurrentCulture));
-                int hast3 = descu.Length - 2;
-                txtDesc.Text = Convert.ToString(descu.Substring(0, hast3));
+                string descu = string.Format(nfi, "{0:C}", Descuento);
+                txtDesc.Text = descu;
             }
         }
 
@@ -221,28 +247,6 @@ namespace PresentationLayer
         {
             if (txtDesc.Text == string.Empty)
                 txtDesc.Text = "0";
-        }
-
-        //private static void Moneda(ref TextBox cajaMoney)
-        //{
-        //    string n = string.Empty;
-        //    double b = 0;
-        //    cajaMoney.Text.Replace(",","").Replace(".","");
-        //    if (n.Equals(""))
-        //        n = "";
-        //    n = n.PadLeft(3, '0');
-        //    if (n.Length>3 && n.Substring(0,1) == "0")
-        //        n = n.Substring(1, n.Length - 1);
-        //    b = Convert.ToDouble(n) / 100;
-        //    cajaMoney.Text = string.Format("{0:C2}", b);
-        //    //cajaMoney.Text = b.ToString("{0:C2}");
-        //}
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro que desea quitar producto?","¡REMOVE ITEM!", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes && dataGridViewSales.RowCount > 0)
-                dataGridViewSales.Rows.Remove(dataGridViewSales.CurrentRow);
         }
         
         private void button11_Click(object sender, EventArgs e)
@@ -254,12 +258,11 @@ namespace PresentationLayer
             }
         }
 
+        int MyNewID;
         private void VentaProductos()
         {
-            int MyNewID;
-            MaxID ID = new MaxID();
             SalesModel model = new SalesModel();
-            MyNewID = model.MaxID(ID);
+            MyNewID = model.MaxID();
             SalesEntity entity = new SalesEntity();
             entity._IDVENT = MyNewID;
             if (textBox2.Text != string.Empty)
@@ -347,9 +350,126 @@ namespace PresentationLayer
 
         private void button12_Click(object sender, EventArgs e)
         {
-            DialogResult rest = MessageBox.Show("¿Está seguro que desea cancelar la venta?","SALES", MessageBoxButtons.YesNo);
-            if (rest == DialogResult.Yes)
-                ClaerItems();
+            //DialogResult rest = MessageBox.Show("¿Está seguro que desea cancelar la venta?","SALES", MessageBoxButtons.YesNo);
+            //if (rest == DialogResult.Yes)
+            //    ClaerItems();
+        }
+
+        private void SalesDesign_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                ProductModel model = new ProductModel();
+                List<ProductEntity> MyList = new List<ProductEntity>();
+                double ID = Convert.ToDouble(dataGridViewSales.CurrentRow.Cells["CodProd"].Value);
+                MyList = model.FilterProdct(ID);
+                for (int i = 0; i < MyList.Count; i++)
+                {
+                    if (MyList[i]._CODPROD == ID)
+                    {
+                        Impuest = Impuest - ((MyList[i]._PREUNIT * MyList[i]._IMPUEST) *
+                            Convert.ToInt32(dataGridViewSales.CurrentRow.Cells["cantPed"].Value) / 100);
+                    }
+                }
+            }
+            if (e.KeyData == Keys.F2)
+            {
+                if (ValidItems() == null)
+                {
+                    ActualizarStock();
+                    VentaProductos();
+                }
+            }
+        }
+
+        private void dataGridViewSales_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                dataGridViewSales.CurrentCell = dataGridViewSales.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                MesuareModel model = new MesuareModel();
+                List<MesuareEntity> NewList = new List<MesuareEntity>();
+                NewList = model.ListMesuare("");
+
+                var query = (from item in NewList.AsEnumerable()
+                             group item by new { item._IDUMS, item._UMSTOCK }
+                            into tb
+                             select new MesuareEntity
+                             {
+                                 _IDUMS = tb.Key._IDUMS,
+                                 _UMSTOCK = tb.Key._UMSTOCK
+                             });
+                ConvertListToDataTable convert = new ConvertListToDataTable();
+                DataTable table = convert.ToDataTable(query.ToList());
+                DataView view = table.DefaultView;
+
+                ContextMenuStrip menu = new ContextMenuStrip();
+                foreach (DataRowView rows in view)
+                {
+                    ToolStripMenuItem SubItem = new ToolStripMenuItem();
+                    SubItem.Name = rows["_IDUMS"].ToString();
+                    SubItem.Text = rows["_UMSTOCK"].ToString();
+                    SubItem.Click += new EventHandler(Eventos);
+                    menu.Items.Add(SubItem);
+                }
+                menu.Show(Cursor.Position);
+            }
+        }
+
+        private void Eventos(object sender, EventArgs e)
+        {
+            // aqui los eventos
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (ValidItems()==null)
+            {
+                SalesModel model = new SalesModel();
+                MyNewID = model.MaxID();
+                CreditNoteDeign design = new CreditNoteDeign();
+                design.StartPosition = FormStartPosition.CenterParent;
+                List<DetailSalesEntity> ListSales = new List<DetailSalesEntity>();
+                foreach (DataGridViewRow item in dataGridViewSales.Rows)
+                {
+                    ListSales.Add(new DetailSalesEntity()
+                    {
+                        _IDVENT = MyNewID,
+                        _CODPRO = Convert.ToDouble(item.Cells["CodProd"].Value),
+                        _DESPRO = item.Cells["DescProd"].Value.ToString(),
+                        _PREUNT = Convert.ToDouble(item.Cells["PreUnit"].Value),
+                        _CANPRO = Convert.ToInt32(item.Cells["cantPed"].Value),
+                        _SUBTOT = Convert.ToDouble(item.Cells["SubTotal"].Value)
+                    });
+                    design.dataGridView1.DataSource = ListSales;
+                }
+                design.ID = MyNewID.ToString();
+                design.txtOpGrav.Text = txtTotPag.Text;
+                design.txtDescuent.Text = txtDesc.Text;
+                design.txtIGV.Text = txtIGV.Text;
+                design.txtSubTot.Text = txtSubTot.Text;
+                design.ShowDialog();
+            }
+        }
+
+        private void btnCash_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process calc = new System.Diagnostics.Process { StartInfo = { FileName = @"calc.exe" } };
+            calc.Start();
+        }
+
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BillingDesign design = new BillingDesign();
+            design.StartPosition = FormStartPosition.CenterScreen;
+            design.ShowDialog();
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain_Layer;
+using FuntionalLayer;
 
 namespace PresentationLayer
 {
@@ -21,6 +22,7 @@ namespace PresentationLayer
         private void CustumerDesign_Load(object sender, EventArgs e)
         {
             ListCustumers("");
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void ListCustumers(string condition)
@@ -34,12 +36,33 @@ namespace PresentationLayer
             ListCustumers(txtbuscarCli.Text);
         }
         
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnnuevo_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            CustomerNewUpdate newUpda = new CustomerNewUpdate();
+            newUpda.StartPosition = FormStartPosition.CenterScreen;
+            newUpda.ComboboxList();
+            newUpda.ListPis();
+            newUpda.btnNew.Text = "Registrar";
+            newUpda.ShowDialog();
+            ListCustumers("");
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             CustomerNewUpdate Update = new CustomerNewUpdate();
             Update.ID = Convert.ToInt32(dataGridReportes.CurrentRow.Cells["CODCLI"].Value);
@@ -70,15 +93,18 @@ namespace PresentationLayer
             ListCustumers("");
         }
 
-        private void btnnuevo_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CustomerNewUpdate newUpda = new CustomerNewUpdate();
-            newUpda.StartPosition = FormStartPosition.CenterScreen;
-            newUpda.ComboboxList();
-            newUpda.ListPis();
-            newUpda.btnNew.Text = "Registrar";
-            newUpda.ShowDialog();
-            ListCustumers("");
+            DownloandExcelFuntion function = new DownloandExcelFuntion();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            CustumerModel model = new CustumerModel();
+            DataTable table = convert.ToDataTable(model.CustumerList(txtbuscarCli.Text));
+            string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+
+            function.BuildExcel(table, appPath + @"-Clientes.xlsx");
+            //Lamar al backgroundWorker
+            FlaatSlanshDesign desing = new FlaatSlanshDesign();
+            desing.showAlert("Descarga Exitosa...", FlaatSlanshDesign.enmType.Success);
         }
     }
 }

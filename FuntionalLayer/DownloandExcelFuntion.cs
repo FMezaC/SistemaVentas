@@ -3,45 +3,89 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using CommonSupport.EntityLayer;
+using System.Data;
+using System.ComponentModel;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace FuntionalLayer
 {
     public class DownloandExcelFuntion
     {
-        public void ExcelExport(DataGridView grid)
+        public void BuildExcel(DataTable dataTable, string ExcelPath)
         {
-        //    SaveFileDialog fichero = new SaveFileDialog();
-        //    fichero.Filter = "Excel [*.xlsx]|*xlm";
-        //    fichero.FileName = "Mi Archivo";
-        //    if (fichero.ShowDialog() == DialogResult.OK)
-        //    {
-        //        Microsoft.Office.Interop.Excel.Application aplicaion;
-        //        aplicaion = new Microsoft.Office.Interop.Excel.Application();
-        //        Workbook libro;
-        //        Worksheet hoja;
-        //        libro = aplicaion.Workbooks.Add();
-        //        hoja = aplicaion.Worksheets.Add();
-        //        int IndiceColumn = 0;
-        //        foreach (DataGridViewColumn nombre in grid.Columns)
-        //        {
-        //            IndiceColumn++;
-        //            hoja.Cells[1, IndiceColumn] = nombre.Name;
-        //        }
-        //        for (int i = 1; i < grid.Rows.Count; i++)
-        //        {
-        //            for (int j = 0; j < grid.Columns.Count - 1; j++)
-        //            {
-        //                if ((grid.Rows[i].Cells[j].Value == null) == false)
-        //                    hoja.Cells[i + 1, j + 1] = grid.Rows[i].Cells[j].Value.ToString();
-        //            }
-        //        }
-        //        //libro.SaveAs(fichero.FileName, XlFileFormat.xlWorkbookNormal);
-        //        libro.Close(true);
-        //        aplicaion.Quit();
-        //    }
-        }
+            using (SpreadsheetDocument myWorkbook =
+                SpreadsheetDocument.Create(ExcelPath,
+                SpreadsheetDocumentType.Workbook))
+            {
+                // workbook Part
+                WorkbookPart workbookPart = myWorkbook.AddWorkbookPart();
+                var worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
+                string relId = workbookPart.GetIdOfPart(worksheetPart);
 
+                //string appPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                
+                // file Version
+                var fileVersion = new FileVersion { ApplicationName = "Microsoft Office Excel" };
+
+                // sheets               
+                var sheets = new Sheets();
+                var sheet = new Sheet { Name = dataTable.TableName, SheetId = 1, Id = relId };
+                sheets.Append(sheet);
+
+                // data
+                SheetData sheetData = new SheetData(CreateSheetData(dataTable));
+
+                // add the parts to the workbook and save
+                var workbook = new Workbook();
+                workbook.Append(fileVersion);
+                workbook.Append(sheets);
+                var worksheet = new Worksheet();
+                worksheet.Append(sheetData);
+                worksheetPart.Worksheet = worksheet;
+                worksheetPart.Worksheet.Save();
+                myWorkbook.WorkbookPart.Workbook = workbook;
+                myWorkbook.WorkbookPart.Workbook.Save();
+                myWorkbook.Close();
+            }
+        }
+        public static int contador;
+        public static int TotalFila;
+        private static List<OpenXmlElement> CreateSheetData(DataTable dataTable)
+        {
+            List<OpenXmlElement> elements = new List<OpenXmlElement>();
+
+            // row header
+            var rowHeader = new Row();
+            Cell[] cellsHeader = new Cell[dataTable.Columns.Count];
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                cellsHeader[i] = new Cell();
+                cellsHeader[i].DataType = CellValues.String;
+                cellsHeader[i].CellValue = new CellValue(dataTable.Columns[i].ColumnName);
+            }
+            rowHeader.Append(cellsHeader);
+            elements.Add(rowHeader);
+            TotalFila = dataTable.Rows.Count;
+            // rows data
+            foreach (DataRow rowDataTable in dataTable.Rows)
+            {
+                var row = new Row();
+                Cell[] cells = new Cell[dataTable.Columns.Count];
+
+                for (int i = 0; i < dataTable.Columns.Count; i++)
+                {
+                    cells[i] = new Cell();
+                    cells[i].DataType = CellValues.String;
+                    cells[i].CellValue = new CellValue(rowDataTable[i].ToString());
+                }
+                row.Append(cells);
+                elements.Add(row);
+                contador++;
+            }
+            return elements;
+        }
     }
 }

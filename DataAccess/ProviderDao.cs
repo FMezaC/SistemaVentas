@@ -50,10 +50,11 @@ namespace DataAccess
             }
         }
 
-        public double MaxID(MaxID ID)
+        public double MaxID()
         {
             using (var conect = GetConnection())
             {
+                double ID = 0;
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
@@ -62,9 +63,9 @@ namespace DataAccess
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ID._ProviderID = reader.GetDouble(0);
+                    ID = reader.GetDouble(0);
                 }
-                return ID._ProviderID;
+                return ID;
             }
         }
 

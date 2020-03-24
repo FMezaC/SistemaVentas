@@ -34,10 +34,11 @@ namespace DataAccess
             }
         }
 
-        public string MaxID (MaxID ID)
+        public int MaxID ()
         {
             using (var conect = GetConnection())
             {
+                int ID = 0;
                 conect.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conect;
@@ -46,9 +47,9 @@ namespace DataAccess
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ID._MaxIDINT = reader.GetInt32(0);
+                    ID = reader.GetInt32(0);
                 }
-                return Convert.ToString(ID._MaxIDINT);
+                return ID;
             }
         }
 
@@ -65,7 +66,8 @@ namespace DataAccess
                 ISNULL(TOTDEB,'')TOTDEB,ISNULL(TOTHAB,'')TOTHAB, ISNULL(RESTAN,'')RESTANTE
                 FROM ASIENTO_CONTABLE ASI INNER JOIN DETALLE_ASIENTO DET ON ASI.IDASI = DET.IDASI
                 INNER JOIN PLAN_CUENTAS PC ON PC.ID = ASI.IDCUENT
-                where DET.DETALL <> '' and ASI.FECHA BETWEEN @FECH1 AND @FECH2 ";
+				where DET.DETALL <> '' and CAST(ASI.FECHA as date) 
+				BETWEEN CAST(@FECH1 as date) AND CAST(@FECH2 as date)";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@FECH1", fech1);
                 cmd.Parameters.AddWithValue("@FECH2", fech2);

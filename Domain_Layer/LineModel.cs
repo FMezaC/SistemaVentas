@@ -16,10 +16,10 @@ namespace Domain_Layer
             return dao.LineList(condition);
         }
 
-        public double NewID (MaxID ID)
+        public double NewID ()
         {
             LineDao dao = new LineDao();
-            return dao.NewID(ID);
+            return dao.NewID();
         }
 
         public void InsertLine(LineEntity Insert)

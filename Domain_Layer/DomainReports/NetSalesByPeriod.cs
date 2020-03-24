@@ -5,5 +5,6 @@ namespace Domain_Layer.DomainReports
     {
         public string Period { get; set; }
         public double NetSales { get; set; }
+        public double imp { get; set; }
     }
 }

@@ -48,17 +48,17 @@
             this.dataGridReportes = new System.Windows.Forms.DataGridView();
             this._UNIDADES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btnSalir = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnGuardar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnKardex = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReportes)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // IMPUEST
@@ -207,33 +207,6 @@
             this.groupBox6.TabIndex = 49;
             this.groupBox6.TabStop = false;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCerrar.BackColor = System.Drawing.Color.Teal;
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCerrar.Location = new System.Drawing.Point(795, 19);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(100, 39);
-            this.btnCerrar.TabIndex = 4;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(983, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(60, 39);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -251,7 +224,7 @@
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(124, 33);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(240, 24);
+            this.txtBuscar.Size = new System.Drawing.Size(262, 24);
             this.txtBuscar.TabIndex = 46;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -259,9 +232,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.btnCerrar);
-            this.groupBox1.Controls.Add(this.pictureBox4);
+            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -270,18 +241,80 @@
             this.groupBox1.TabIndex = 48;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // statusStrip1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(909, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 39);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 48;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.statusStrip1.AllowItemReorder = true;
+            this.statusStrip1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSalir,
+            this.btnGuardar,
+            this.btnKardex});
+            this.statusStrip1.Location = new System.Drawing.Point(727, 16);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusStrip1.Size = new System.Drawing.Size(327, 56);
+            this.statusStrip1.TabIndex = 56;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSalir.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnSalir.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(93, 51);
+            this.btnSalir.Spring = true;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnGuardar.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnGuardar.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(93, 51);
+            this.btnGuardar.Spring = true;
+            this.btnGuardar.Text = "Exportar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnKardex
+            // 
+            this.btnKardex.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnKardex.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.btnKardex.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.btnKardex.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnKardex.Image = ((System.Drawing.Image)(resources.GetObject("btnKardex.Image")));
+            this.btnKardex.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnKardex.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnKardex.Name = "btnKardex";
+            this.btnKardex.Size = new System.Drawing.Size(93, 51);
+            this.btnKardex.Spring = true;
+            this.btnKardex.Text = "Kardex";
+            this.btnKardex.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnKardex.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // InventoryDesign
             // 
@@ -296,10 +329,10 @@
             this.Load += new System.EventHandler(this.InventoryDesign_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReportes)).EndInit();
             this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -325,11 +358,12 @@
         private System.Windows.Forms.DataGridView dataGridReportes;
         private System.Windows.Forms.DataGridViewTextBoxColumn _UNIDADES;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel btnSalir;
+        private System.Windows.Forms.ToolStripStatusLabel btnGuardar;
+        private System.Windows.Forms.ToolStripStatusLabel btnKardex;
     }
 }

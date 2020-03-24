@@ -26,6 +26,7 @@ namespace PresentationLayer
             ListTypeMoney();
             ListTypeBilling("");
             ListStates();
+            statusStrip1.Cursor = Cursors.Hand;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -235,6 +236,9 @@ namespace PresentationLayer
         decimal bonif = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "";
             if (dataGridView1.RowCount > 0)
             {
                 decimal subTotal = 0;
@@ -242,16 +246,13 @@ namespace PresentationLayer
                 {
                     subTotal = subTotal + Convert.ToDecimal(rows.Cells["SubTot"].Value);
                 }
-                string Total = Convert.ToString(subTotal.ToString("C2", CultureInfo.CurrentCulture));
-                int hasta = Total.Length - 2;
-                textBox8.Text = Convert.ToString(Total.Substring(0, hasta));
-                string imp = Convert.ToString(impuest.ToString("C2", CultureInfo.CurrentCulture));
-                int hst2 = imp.Length - 2;
-                textBox10.Text = imp.Substring(0, hst2);
+                string Total = string.Format(nfi, "{0:C}", subTotal);
+                textBox8.Text = Total;
+                string imp = string.Format(nfi, "{0:C}", impuest);
+                textBox10.Text = imp;
 
-                string descu = Convert.ToString(Descuento.ToString("C2", CultureInfo.CurrentCulture));
-                int hast3 = descu.Length - 2;
-                textBox2.Text = Convert.ToString(descu.Substring(0, hast3));
+                string descu = string.Format(nfi, "{0:C}", Descuento);
+                textBox2.Text = descu;
                 
                 if (textBox4.Text != string.Empty)
                 {
@@ -266,59 +267,15 @@ namespace PresentationLayer
                             bonif = 0;
                     }
                 }
-                string bonus = Convert.ToString(bonif.ToString("C2", CultureInfo.CurrentCulture));
-                int hastBNF = bonus.Length - 2;
-                textBox9.Text = Convert.ToString(bonus.Substring(0, hastBNF));
+                string bonus = string.Format(nfi, "{0:C}", bonif);
+                textBox9.Text = bonus;
 
                 decimal TotalP = (Convert.ToDecimal(textBox10.Text) + Convert.ToDecimal(textBox8.Text)) - (Convert.ToDecimal(textBox9.Text) + Convert.ToDecimal(textBox2.Text));
-                string TotPstr = TotalP.ToString("C", CultureInfo.CurrentCulture);
-                int hst3 = TotPstr.Length - 2;
-                textBox3.Text = TotPstr.Substring(0, hst3);
+                string TotPstr = string.Format(nfi, "{0:C}", TotalP);
+                textBox3.Text = TotPstr;
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (validarTextbox())
-            {
-                foreach (DataGridViewRow rows in dataGridView1.Rows)
-                {
-                    BillingDetailEntity BDEntity = new BillingDetailEntity();
-                    BDEntity._CODPRO = Convert.ToDouble(rows.Cells["CodProd"].Value);
-                    BDEntity._DESCRI = rows.Cells["descrip"].Value.ToString();
-                    BDEntity._UNIMED = rows.Cells["UniMedi"].Value.ToString();
-                    BDEntity._CANTID = Convert.ToInt32(rows.Cells["CantProd"].Value);
-                    BDEntity._PREUIT = Convert.ToDouble(rows.Cells["PREUNIT"].Value);
-                    BDEntity._SUBTOT = Convert.ToDouble(rows.Cells["SubTot"].Value);
-                    BillingModel BDModel = new BillingModel();
-                    BDModel.InsertDetailBilling(BDEntity);
-                }
-
-                BillingEntity EntityBG = new BillingEntity();
-                EntityBG._TIPFAC = comboBox4.Text;
-                EntityBG._FCHFAC = dateTimePicker1.Value;
-                EntityBG._FCHVEN = dateTimePicker2.Value;
-                EntityBG._BNFDOC = textBox4.Text;
-                EntityBG._TIPPAG = comboBox1.Text;
-                EntityBG._TIPMON = comboBox2.Text;
-                EntityBG._ESTADO = comboBox3.Text;
-                EntityBG._SUBTOT = Convert.ToDouble(textBox8.Text);
-                EntityBG._BONIFI = Convert.ToDouble(textBox9.Text);
-                EntityBG._IMPUST = Convert.ToDouble(textBox10.Text);
-                EntityBG._DESCUE = Convert.ToDouble(textBox2.Text);
-                EntityBG._TOTPAG = Convert.ToDouble(textBox3.Text);
-                EntityBG._USUARI = UserLoginCache.user;
-                BillingModel ModelBG = new BillingModel();
-                ModelBG.InsertBillig(EntityBG);
-
-                FlaatSlanshDesign design = new FlaatSlanshDesign();
-                design.StartPosition = FormStartPosition.CenterScreen;
-                design.title = "Generando Factura...";
-                design.ShowDialog();
-                CleartItems();
-            }
-        }
-
+        
         void CleartItems()
         {
             textBox1.Clear();
@@ -363,5 +320,51 @@ namespace PresentationLayer
             return false;
         }
 
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            if (validarTextbox())
+            {
+                foreach (DataGridViewRow rows in dataGridView1.Rows)
+                {
+                    BillingDetailEntity BDEntity = new BillingDetailEntity();
+                    BDEntity._CODPRO = Convert.ToDouble(rows.Cells["CodProd"].Value);
+                    BDEntity._DESCRI = rows.Cells["descrip"].Value.ToString();
+                    BDEntity._UNIMED = rows.Cells["UniMedi"].Value.ToString();
+                    BDEntity._CANTID = Convert.ToInt32(rows.Cells["CantProd"].Value);
+                    BDEntity._PREUIT = Convert.ToDouble(rows.Cells["PREUNIT"].Value);
+                    BDEntity._SUBTOT = Convert.ToDouble(rows.Cells["SubTot"].Value);
+                    BillingModel BDModel = new BillingModel();
+                    BDModel.InsertDetailBilling(BDEntity);
+                }
+
+                BillingEntity EntityBG = new BillingEntity();
+                EntityBG._TIPFAC = comboBox4.Text;
+                EntityBG._FCHFAC = dateTimePicker1.Value;
+                EntityBG._FCHVEN = dateTimePicker2.Value;
+                EntityBG._BNFDOC = textBox4.Text;
+                EntityBG._TIPPAG = comboBox1.Text;
+                EntityBG._TIPMON = comboBox2.Text;
+                EntityBG._ESTADO = comboBox3.Text;
+                EntityBG._SUBTOT = Convert.ToDouble(textBox8.Text);
+                EntityBG._BONIFI = Convert.ToDouble(textBox9.Text);
+                EntityBG._IMPUST = Convert.ToDouble(textBox10.Text);
+                EntityBG._DESCUE = Convert.ToDouble(textBox2.Text);
+                EntityBG._TOTPAG = Convert.ToDouble(textBox3.Text);
+                EntityBG._USUARI = UserLoginCache.user;
+                BillingModel ModelBG = new BillingModel();
+                ModelBG.InsertBillig(EntityBG);
+
+                FlaatSlanshDesign design = new FlaatSlanshDesign();
+                design.StartPosition = FormStartPosition.CenterScreen;
+                design.title = "Generando Factura...";
+                design.ShowDialog();
+                CleartItems();
+            }
+        }
     }
 }
